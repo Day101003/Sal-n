@@ -1,0 +1,136 @@
+<main class="main">
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero section dark-background">
+
+    <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+      <div class="carousel-item active">
+        <img src="assets/img/carrusel-unas/img1.jpg" alt="">
+        <div class="carousel-container">
+          <h2><span>Nails</span> Artist</h2>
+          <p>Bienvenido a nuestro salón! Descurbre nuestros colores, estilos y servicios para el cuidado de las manos</p>
+          <div>
+            <a href="#menu" class="btn-get-started">Nuestros Servicios</a>
+            <a href="#book-a-table" class="btn-get-started">Agendar Cita</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="assets/img/carrusel-unas/img2.jpg" alt="">
+        <div class="carousel-container">
+          <h2><span>Nails</span> Artist</h2>
+          <p>Agenda tu cita de inmediato!</p>
+          <div>
+            <a href="#menu" class="btn-get-started">Nuestros Servicios</a>
+            <a href="#book-a-table" class="btn-get-started">Agendar Cita</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="assets/img/carrusel-unas/img3.jpg" alt="">
+        <div class="carousel-container">
+           <h2><span>Nails</span> Artist</h2>
+          <p>Tus manos, nuestro trabajo</p>
+          <div>
+            <a href="#menu" class="btn-get-started">Nuestros Servicios</a>
+            <a href="#book-a-table" class="btn-get-started">Agendar Cita</a>
+          </div>
+        </div>
+      </div>
+
+      <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+      </a>
+      <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+      </a>
+
+      
+
+    </div>
+
+  </section>
+  <!-- /Hero Section -->
+
+  <!-- About Section -->
+<section id="about" class="about section light-background">
+  <div class="container">
+    <div class="row gy-4 align-items-center" data-aos="fade-up">
+      <div class="col-lg-6">
+        <img src="assets/img/carrusel-unas/img2.jpg" class="img-fluid rounded shadow" alt="Interior del salón">
+      </div>
+
+      <div class="col-lg-6">
+        <h2 class="mb-3 text-pink-600">Sobre Nuestro Salón</h2>
+        <p class="fst-italic">
+          En <strong> Nails Studio</strong>, fusionamos arte, estilo y cuidado profesional para ofrecerte la mejor experiencia de belleza en uñas.
+        </p>
+        <div class="row gy-3 mt-3">
+          <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm text-center p-3">
+              <i class="bi bi-brush fs-1 text-pink-600 mb-2"></i>
+              <h5>Diseños Personalizados</h5>
+              <p>Cada manicura refleja tu estilo con colores y formas únicas.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm text-center p-3">
+              <i class="bi bi-flower3 fs-1 text-pink-600 mb-2"></i>
+              <h5>Ambiente Relajante</h5>
+              <p>Un espacio cómodo, limpio y aromático para consentirte.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm text-center p-3">
+              <i class="bi bi-gem fs-1 text-pink-600 mb-2"></i>
+              <h5>Materiales Premium</h5>
+              <p>Usamos productos de alta calidad para cuidar tus uñas.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm text-center p-3">
+              <i class="bi bi-person-hearts fs-1 text-pink-600 mb-2"></i>
+              <h5>Atención Personalizada</h5>
+              <p>Nuestro equipo está enfocado en ofrecerte una experiencia única.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /About Section -->
+
+<section id="works" class="works section">
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Trabajos Realizados</h2>
+    <div><span>Algunos de nuestros</span> <span class="description-title">Diseños de Uñas</span></div>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="swiper works-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" *ngFor="let img of [1,2,3,4,5,6,7,8]">
+          <div class="card border-0 shadow-sm">
+            <img [src]="'assets/img/trabajos/unas' + img + '.jpg'" class="card-img-top rounded" alt="Trabajo {{img}}">
+            <div class="card-body text-center">
+              <p class="text-muted small mb-0">Diseño #{{img}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controles del Swiper -->
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+</section>
+
+
+
+</main>

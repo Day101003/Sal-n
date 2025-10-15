@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+.works-swiper .card {
+  transition: transform 0.3s ease;
+}
+
+.works-swiper .card:hover {
+  transform: scale(1.05);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #e91e63;
+}
