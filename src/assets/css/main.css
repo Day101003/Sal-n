@@ -868,7 +868,6 @@ section,
 }
 
 .hero .btn-get-started {
-  color: var(--contrast-color);
   font-weight: 500;
   font-size: 15px;
   letter-spacing: 1px;
@@ -880,6 +879,38 @@ section,
   animation: fadeInUp 1s both 0.4s;
   border: 2px solid var(--accent-color);
 }
+
+.hero .btn-get-started:first-child {
+  background-color: #f4c26d; 
+  color: #1a1001;           
+  border: 2px solid #f4c26d;
+}
+
+.hero .btn-get-started:first-child:hover {
+  background-color: #b17923; 
+  color: #fff;
+}
+
+.hero .btn-get-started:last-child {
+   background-color: #f4c26d; 
+  color: #1a1001;            
+  border: 2px solid #f4c26d;
+}
+
+.hero .btn-get-started:last-child:hover {
+   background-color: #b17923; 
+  color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
 
 .hero .btn-get-started:hover {
   background: var(--accent-color);
@@ -1668,4 +1699,24 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
+
+
+/* --- Fix: botones del carrusel bloqueados --- */
+.carousel-container,
+.carousel-container a,
+.btn-get-started {
+  position: relative;
+  z-index: 1000 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+.carousel-item::before {
+  pointer-events: none !important;
+}
+.btn-get-started {
+  position: relative !important;
+  z-index: 9999 !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
 }

@@ -12,7 +12,10 @@
           <p>Bienvenido a nuestro salón! Descurbre nuestros colores, estilos y servicios para el cuidado de las manos</p>
           <div>
             <a href="#menu" class="btn-get-started">Nuestros Servicios</a>
-            <a href="#book-a-table" class="btn-get-started">Agendar Cita</a>
+      <button class="btn-get-started" (click)="irAAgendarCita()">
+  Agendar Cita
+</button>
+
           </div>
         </div>
       </div>
@@ -24,7 +27,10 @@
           <p>Agenda tu cita de inmediato!</p>
           <div>
             <a href="#menu" class="btn-get-started">Nuestros Servicios</a>
-            <a href="#book-a-table" class="btn-get-started">Agendar Cita</a>
+       <button class="btn-get-started" (click)="irAAgendarCita()">
+  Agendar Cita
+</button>
+
           </div>
         </div>
       </div>
@@ -36,7 +42,11 @@
           <p>Tus manos, nuestro trabajo</p>
           <div>
             <a href="#menu" class="btn-get-started">Nuestros Servicios</a>
-            <a href="#book-a-table" class="btn-get-started">Agendar Cita</a>
+          <button class="btn-get-started" (click)="irAAgendarCita()">
+  Agendar Cita
+</button>
+
+
           </div>
         </div>
       </div>
@@ -113,7 +123,7 @@
   <div class="container" data-aos="fade-up" data-aos-delay="100">
     <div class="swiper works-swiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide" *ngFor="let img of [1,2,3,4,5,6,7,8]">
+        <div class="swiper-slide" *ngFor="let img of [1,2,3,4,5,6,7]">
           <div class="card border-0 shadow-sm">
             <img [src]="'assets/img/trabajos/unas' + img + '.jpg'" class="card-img-top rounded" alt="Trabajo {{img}}">
             <div class="card-body text-center">
@@ -130,6 +140,8 @@
     </div>
   </div>
 </section>
+
+
 
 
 

@@ -11,3 +11,8 @@
 .swiper-button-prev {
   color: #e91e63;
 }
+.carousel a.btn-get-started {
+  pointer-events: auto !important;
+  z-index: 9999;
+  position: relative;
+}

@@ -1,0 +1,17 @@
+.hero {
+  background: linear-gradient(135deg, #1a1001, #50280d);
+  color: white;
+}
+
+.form-label {
+  color: hsl(22, 88%, 13%);
+}
+
+.btn-primary {
+  background-color: #f0ba55;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #b16b1b;
+}

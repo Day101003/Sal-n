@@ -1,8 +1,9 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-declare var Swiper: any; // 
-declare var AOS: any; 
+declare const AOS: any;
+declare const Swiper: any;
 
 @Component({
   selector: 'app-home',
@@ -11,33 +12,48 @@ declare var AOS: any;
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent implements OnInit, AfterViewInit {
+
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-  
-    if (typeof AOS !== 'undefined') {
-      AOS.init({ duration: 800, once: true });
-    }
-
-    
+    // Esperar un poco para asegurarse de que todo el DOM esté renderizado
     setTimeout(() => {
+      // ✅ Inicializar AOS
+      if (typeof AOS !== 'undefined') {
+        AOS.init({
+          duration: 1000,
+          once: true
+        });
+      }
+
+      // ✅ Inicializar Swiper (carrusel de trabajos)
       if (typeof Swiper !== 'undefined') {
         new Swiper('.works-swiper', {
-          loop: true,
           slidesPerView: 3,
           spaceBetween: 20,
-          autoplay: { delay: 3000, disableOnInteraction: false },
-          pagination: { el: '.swiper-pagination', clickable: true },
-          navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+          },
           breakpoints: {
             320: { slidesPerView: 1 },
             768: { slidesPerView: 2 },
             1024: { slidesPerView: 3 }
           }
         });
-      } else {
-        console.warn('Swiper no está definido. Verifica el script en angular.json');
       }
-    }, 500); 
+    }, 600); // 0.6s para que AOS no tape los elementos
+  }
+
+  irAAgendarCita(): void {
+    this.router.navigate(['/agendar-cita']);
   }
 }

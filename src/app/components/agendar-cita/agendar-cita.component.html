@@ -1,0 +1,67 @@
+<main class="main">
+  <section class="section hero dark-background text-center py-5">
+    <div class="container" data-aos="fade-up">
+      <h2 class="text-white">Agendá tu Cita</h2>
+      <p class="text-light">Seleccioná tu servicio, fecha y hora preferida. ¡Nos encantará atenderte!</p>
+    </div>
+    
+  </section>
+
+  <section class="section light-background py-5">
+    <div class="container" data-aos="fade-up">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card shadow-lg border-0 rounded-4 p-4">
+            <form>
+              <div class="row gy-3">
+                <div class="col-md-6">
+                  <label for="nombre" class="form-label fw-bold">Nombre completo</label>
+                  <input type="text" id="nombre" class="form-control" placeholder="Tu nombre">
+                </div>
+
+                <div class="col-md-6">
+                  <label for="telefono" class="form-label fw-bold">Teléfono</label>
+                  <input type="tel" id="telefono" class="form-control" placeholder="+506 8888-9999">
+                </div>
+
+                <div class="col-md-6">
+                  <label for="servicio" class="form-label fw-bold">Servicio</label>
+                  <select id="servicio" class="form-select">
+                    <option>-- Seleccioná --</option>
+                    <option>Manicure Gel</option>
+                    <option>Pedicure Spa</option>
+                    <option>Soft Gel</option>
+                    <option>Diseño Personalizado</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="fecha" class="form-label fw-bold">Fecha</label>
+                  <input type="date" id="fecha" class="form-control">
+                </div>
+
+                <div class="col-md-6">
+                  <label for="hora" class="form-label fw-bold">Hora</label>
+                  <input type="time" id="hora" class="form-control">
+                </div>
+
+                <div class="col-md-6">
+                  <label for="correo" class="form-label fw-bold">Correo electrónico</label>
+                  <input type="email" id="correo" class="form-control" placeholder="tucorreo@email.com">
+                </div>
+              </div>
+
+              <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary px-4 py-2">
+                  Confirmar Cita
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+</main>
