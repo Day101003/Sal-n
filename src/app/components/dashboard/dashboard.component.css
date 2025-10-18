@@ -1,0 +1,79 @@
+/* === SIDEBAR GENERAL === */
+.sidebar {
+  background: linear-gradient(180deg, #2b1205 0%, #4b1f0b 100%);
+  color: #fff;
+  width: 230px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar .logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.sidebar .logo img {
+  width: 120px;
+  height: auto;
+}
+
+.sidebar ul {
+  list-style: none; 
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.sidebar li {
+  margin: 10px 0;
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px 15px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+
+.sidebar a:hover {
+  background: rgba(240, 186, 85, 0.2);
+  color: #f0ba55;
+}
+
+.sidebar a.active {
+  background: #f0ba55;
+  color: #4b1f0b;
+  font-weight: 600;
+}
+
+.main-content {
+  margin-left: 230px;
+  padding: 20px;
+  background: #fdf8f3;
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px;
+  background: #fff;
+  border-bottom: 2px solid #f0ba55;
+}
+
+.username {
+  font-weight: 600;
+  color: #50280d;
+}

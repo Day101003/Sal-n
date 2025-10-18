@@ -1,67 +1,112 @@
 <main class="main">
+
   <section class="section hero dark-background text-center py-5">
-    <div class="container" data-aos="fade-up">
+    <div class="container">
       <h2 class="text-white">Agendá tu Cita</h2>
-      <p class="text-light">Seleccioná tu servicio, fecha y hora preferida. ¡Nos encantará atenderte!</p>
+      <p class="text-light">Completá los pasos para reservar tu cita 💅</p>
     </div>
-    
   </section>
 
   <section class="section light-background py-5">
-    <div class="container" data-aos="fade-up">
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="card shadow-lg border-0 rounded-4 p-4">
-            <form>
-              <div class="row gy-3">
-                <div class="col-md-6">
-                  <label for="nombre" class="form-label fw-bold">Nombre completo</label>
-                  <input type="text" id="nombre" class="form-control" placeholder="Tu nombre">
-                </div>
+    <div class="container">
+      <div class="card shadow-lg border-0 rounded-4 p-4">
+        
+        <div *ngIf="pasoActual === 1" data-aos="fade-up">
+          <h4 class="mb-4 text-center">Paso 1: Tus Datos</h4>
 
-                <div class="col-md-6">
-                  <label for="telefono" class="form-label fw-bold">Teléfono</label>
-                  <input type="tel" id="telefono" class="form-control" placeholder="+506 8888-9999">
-                </div>
-
-                <div class="col-md-6">
-                  <label for="servicio" class="form-label fw-bold">Servicio</label>
-                  <select id="servicio" class="form-select">
-                    <option>-- Seleccioná --</option>
-                    <option>Manicure Gel</option>
-                    <option>Pedicure Spa</option>
-                    <option>Soft Gel</option>
-                    <option>Diseño Personalizado</option>
-                  </select>
-                </div>
-
-                <div class="col-md-6">
-                  <label for="fecha" class="form-label fw-bold">Fecha</label>
-                  <input type="date" id="fecha" class="form-control">
-                </div>
-
-                <div class="col-md-6">
-                  <label for="hora" class="form-label fw-bold">Hora</label>
-                  <input type="time" id="hora" class="form-control">
-                </div>
-
-                <div class="col-md-6">
-                  <label for="correo" class="form-label fw-bold">Correo electrónico</label>
-                  <input type="email" id="correo" class="form-control" placeholder="tucorreo@email.com">
-                </div>
+          <form>
+            <div class="row gy-3">
+              <div class="col-md-6">
+                <label for="nombre" class="form-label fw-bold">Nombre completo</label>
+                <input type="text" id="nombre" class="form-control" [(ngModel)]="cita.nombre" name="nombre" required />
               </div>
 
-              <div class="text-center mt-4">
-                <button type="submit" class="btn btn-primary px-4 py-2">
-                  Confirmar Cita
-                </button>
+              <div class="col-md-6">
+                <label for="telefono" class="form-label fw-bold">Teléfono</label>
+                <input type="tel" id="telefono" class="form-control" [(ngModel)]="cita.telefono" name="telefono" />
               </div>
-            </form>
+
+              <div class="col-md-6">
+                <label for="correo" class="form-label fw-bold">Correo electrónico</label>
+                <input type="email" id="correo" class="form-control" [(ngModel)]="cita.correo" name="correo" />
+              </div>
+
+              <div class="col-md-6">
+                <label for="servicio" class="form-label fw-bold">Servicio</label>
+                <select id="servicio" class="form-select" [(ngModel)]="cita.servicio" name="servicio">
+                  <option value="">-- Seleccioná --</option>
+                  <option>Manicure Gel</option>
+                  <option>Pedicure Spa</option>
+                  <option>Soft Gel</option>
+                  <option>Diseño Personalizado</option>
+                </select>
+              </div>
+            </div>
+          </form>
+
+          <div class="text-center mt-4">
+            <button class="btn btn-primary px-4" (click)="cambiarPaso(2)">
+              Siguiente
+            </button>
+          </div>
+        </div>
+
+        
+        <div *ngIf="pasoActual === 2" data-aos="fade-up">
+          <h4 class="mb-4 text-center">Paso 2: Seleccioná Fecha y Hora</h4>
+
+          <div class="calendar-grid mb-4">
+            <div
+              class="calendar-day"
+              *ngFor="let dia of diasMes"
+              [class.ocupado]="dia.ocupado"
+              [class.seleccionado]="cita.fecha === dia.fecha"
+              (click)="seleccionarDia(dia)">
+              {{ dia.dia }}
+            </div>
+          </div>
+
+          <div class="text-center mb-4">
+            <h5>Horas Disponibles</h5>
+            <div class="d-flex flex-wrap justify-content-center gap-2 mt-2">
+              <button
+                *ngFor="let hora of horas"
+                class="btn"
+                [ngClass]="{
+                  'btn-outline-secondary': !esHoraDisponible(hora),
+                  'btn-outline-primary': esHoraDisponible(hora),
+                  'active': cita.hora === hora
+                }"
+                [disabled]="!esHoraDisponible(hora)"
+                (click)="seleccionarHora(hora)">
+                {{ hora }}
+              </button>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button class="btn btn-secondary me-2" (click)="cambiarPaso(1)">Atrás</button>
+            <button class="btn btn-primary" (click)="cambiarPaso(3)">Continuar</button>
+          </div>
+        </div>
+
+        
+        <div *ngIf="pasoActual === 3" data-aos="fade-up">
+          <h4 class="mb-4 text-center">Paso 3: Confirmá tu Cita</h4>
+
+          <div class="text-center mb-3">
+            <p><strong>Nombre:</strong> {{ cita.nombre }}</p>
+            <p><strong>Servicio:</strong> {{ cita.servicio }}</p>
+            <p><strong>Fecha:</strong> {{ cita.fecha }}</p>
+            <p><strong>Hora:</strong> {{ cita.hora }}</p>
+          </div>
+
+          <div class="text-center">
+            <button class="btn btn-secondary me-2" (click)="cambiarPaso(2)">Atrás</button>
+            <button class="btn btn-success" (click)="confirmarCita()">Confirmar Cita</button>
           </div>
         </div>
       </div>
     </div>
   </section>
-
- 
 </main>

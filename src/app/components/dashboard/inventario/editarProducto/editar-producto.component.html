@@ -1,0 +1,61 @@
+<div class="module-card">
+  <h3> Editar Producto</h3>
+
+  <form (ngSubmit)="actualizarProducto()" #form="ngForm">
+    <div class="row gy-3">
+
+      <div class="col-md-6">
+        <label class="form-label">Nombre del Producto</label>
+        <input type="text" class="form-control" [(ngModel)]="producto.nombre" name="nombre" required />
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Unidad</label>
+        <input type="text" class="form-control" [(ngModel)]="producto.unidad" name="unidad" required />
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Stock Actual</label>
+        <input type="number" class="form-control" [(ngModel)]="producto.stock" name="stock" min="0" required />
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Stock Mínimo</label>
+        <input type="number" class="form-control" [(ngModel)]="producto.minimo" name="minimo" min="0" required />
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Costo (₡)</label>
+        <input type="number" class="form-control" [(ngModel)]="producto.costo" name="costo" min="0" required />
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Estado</label>
+        <select class="form-select" [(ngModel)]="producto.estado" name="estado">
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Categoría</label>
+        <select class="form-select" [(ngModel)]="producto.categoria" name="categoria">
+          <option value="Manicure">Manicure</option>
+          <option value="Pedicure">Pedicure</option>
+          <option value="Extensiones">Extensiones</option>
+          <option value="Tratamientos">Tratamientos</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="text-end mt-4">
+      <button type="button" class="btn btn-secondary me-2" routerLink="/dashboard/inventario">
+        <i class="bi bi-arrow-left"></i> Cancelar
+      </button>
+      <button type="submit" class="btn btn-save">
+        <i class="bi bi-save"></i> Actualizar Producto
+      </button>
+    </div>
+  </form>
+</div>

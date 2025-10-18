@@ -23,18 +23,18 @@ h3 {
   font-weight: 600;
 }
 
-.bajo-stock {
-  color: #d90429;
-  font-weight: bold;
-}
-
-.estado-activo {
-  color: #007f5f;
+.estado-pendiente {
+  color: #f59f00;
   font-weight: 600;
 }
 
-.estado-inactivo {
-  color: #9a031e;
+.estado-confirmada {
+  color: #2b9348;
+  font-weight: 600;
+}
+
+.estado-cancelada {
+  color: #d90429;
   font-weight: 600;
 }
 
@@ -44,6 +44,15 @@ h3 {
   margin: 0 2px;
   border-radius: 6px;
   transition: 0.2s;
+}
+
+.btn-confirm {
+  background-color: #2b9348;
+  color: white;
+}
+
+.btn-confirm:hover {
+  background-color: #24773a;
 }
 
 .btn-edit {
@@ -74,6 +83,6 @@ h3 {
 }
 
 .btn-add:hover {
-  background-color: #66453d;
-  color: #ffffff;
+  background-color: #f0ba55;
+  color: #50280d;
 }

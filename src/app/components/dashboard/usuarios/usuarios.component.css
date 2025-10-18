@@ -23,21 +23,18 @@ h3 {
   font-weight: 600;
 }
 
-.bajo-stock {
-  color: #d90429;
-  font-weight: bold;
-}
-
+/* --- ESTADOS --- */
 .estado-activo {
-  color: #007f5f;
+  color: #2b9348;
   font-weight: 600;
 }
 
 .estado-inactivo {
-  color: #9a031e;
+  color: #d90429;
   font-weight: 600;
 }
 
+/* --- BOTONES --- */
 .acciones .btn {
   border: none;
   padding: 6px 10px;
@@ -64,6 +61,24 @@ h3 {
   background-color: #6a0112;
 }
 
+.btn-activate {
+  background-color: #2b9348;
+  color: white;
+}
+
+.btn-activate:hover {
+  background-color: #24773a;
+}
+
+.btn-deactivate {
+  background-color: #f59f00;
+  color: #50280d;
+}
+
+.btn-deactivate:hover {
+  background-color: #d49a00;
+}
+
 .btn-add {
   background-color: #50280d;
   color: #fff;
@@ -74,6 +89,6 @@ h3 {
 }
 
 .btn-add:hover {
-  background-color: #66453d;
-  color: #ffffff;
+  background-color: #f0ba55;
+  color: #50280d;
 }

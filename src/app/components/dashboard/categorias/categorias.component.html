@@ -1,0 +1,31 @@
+<div class="module-card">
+  <div class="header">
+    <h3> Categorías</h3>
+    <button class="btn btn-add" routerLink="/dashboard/categorias/crear">
+      <i class="bi bi-plus-circle"></i> Nueva Categoría
+    </button>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th class="text-center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of categorias; let i = index">
+        <td>{{ c.nombre }}</td>
+        <td class="text-center">
+         <button class="btn btn-sm btn-edit" [routerLink]="['/dashboard/categorias/editar', i]">
+  <i class="bi bi-pencil-square"></i>
+</button>
+
+          <button class="btn btn-sm btn-delete" (click)="eliminarCategoria(c)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

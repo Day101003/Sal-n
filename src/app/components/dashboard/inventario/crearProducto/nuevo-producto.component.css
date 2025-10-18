@@ -1,0 +1,73 @@
+/* === Tarjeta principal === */
+.module-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #f0ba55;
+  transition: all 0.3s ease;
+
+}
+
+
+.module-card:hover {
+  transform: translateY(-3px);
+}
+
+
+
+
+h3 {
+  color: #50280d;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  color: #50280d;
+  font-weight: 500;
+}
+
+.btn-save {
+  background-color: #f0ba55;
+  color: #50280d;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  transition: 0.3s;
+}
+
+.btn-save:hover {
+  background-color: #d29a3a;
+}
+
+.btn-secondary {
+  background-color: #50280d;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  transition: 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #66453d;
+  color: #ffffff;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .table th, .table td {
+    font-size: 0.85rem;
+    padding: 6px;
+  }
+
+  .btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+
+  .header h3 {
+    font-size: 1.1rem;
+  }
+}

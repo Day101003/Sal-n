@@ -1,0 +1,39 @@
+<div class="dashboard-container">
+  
+
+    
+ <aside class="sidebar"> 
+  
+  <a href="#" class="logo d-flex align-items-center">
+       <img src="assets/img/img-unas/logo1.png" alt="Logo" class="img-fluid" style="width: 40 px; height: 110px; ">
+
+      </a>
+    <nav>
+      <ul>
+         <li><a routerLink="/dashboard/olap" routerLinkActive="active">Reportes OLAP</a></li>
+        <li><a routerLink="/dashboard/inventario" routerLinkActive="active">Inventario</a></li>
+        <li><a routerLink="/dashboard/servicios" routerLinkActive="active">Servicios</a></li>
+        <li><a routerLink="/dashboard/categorias" routerLinkActive="active">Categorías</a></li>
+        <li><a routerLink="/dashboard/citas" routerLinkActive="active">Citas</a></li>
+        <li><a routerLink="/dashboard/usuarios" routerLinkActive="active">Usuarios</a></li>
+       
+      </ul>
+    </nav>
+  </aside>
+
+
+  <div class="main-content">
+    
+    <header class="topbar">
+      <div class="user-info">
+        <span class="username"> Day Admin</span>
+        
+      </div>
+    </header>
+
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+
+  </div>
+</div>

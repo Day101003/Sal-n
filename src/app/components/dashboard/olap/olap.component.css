@@ -1,0 +1,52 @@
+.olap-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.kpi-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.kpi-card {
+  flex: 1;
+  min-width: 220px;
+  background: #fff7f1;
+  color: #50280d;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+}
+
+.kpi-card i {
+  font-size: 2rem;
+  color: #f0ba55;
+}
+
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 25px;
+}
+
+.chart-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chart-card h5 {
+  color: #50280d;
+  margin-bottom: 15px;
+  font-weight: 600;
+}

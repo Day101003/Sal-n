@@ -1,0 +1,38 @@
+<div class="module-card">
+  <div class="header">
+    <h3>Servicios del Salón</h3>
+    <button class="btn btn-add" [routerLink]="['/dashboard/servicios/crear']">
+      <i class="bi bi-plus-circle"></i> Nuevo Servicio
+    </button>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Categoría</th>
+        <th>Precio</th>
+        <th class="text-center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of servicios; let i = index">
+        <td>{{ s.nombre }}</td>
+        <td>{{ s.categoria }}</td>
+        <td>{{ s.precio | currency: 'CRC' }}</td>
+        <td class="text-center">
+          <button
+  class="btn btn-sm btn-edit"
+  [routerLink]="['/dashboard/servicios/editar', i]"
+>
+  <i class="bi bi-pencil-square"></i>
+</button>
+
+          <button class="btn btn-sm btn-delete" (click)="eliminarServicio(s)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

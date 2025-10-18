@@ -23,21 +23,6 @@ h3 {
   font-weight: 600;
 }
 
-.bajo-stock {
-  color: #d90429;
-  font-weight: bold;
-}
-
-.estado-activo {
-  color: #007f5f;
-  font-weight: 600;
-}
-
-.estado-inactivo {
-  color: #9a031e;
-  font-weight: 600;
-}
-
 .acciones .btn {
   border: none;
   padding: 6px 10px;
@@ -74,6 +59,6 @@ h3 {
 }
 
 .btn-add:hover {
-  background-color: #66453d;
-  color: #ffffff;
+  background-color: #f0ba55;
+  color: #50280d;
 }

@@ -1,0 +1,31 @@
+<div class="overlay">
+  <div class="modal-card animate-fade">
+    <h3 class="modal-title">
+      <i class="bi bi-folder-plus"></i> Crear Nueva Categoría
+    </h3>
+
+    <form (ngSubmit)="guardarCategoria()" class="formulario">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre de la categoría</label>
+        <input
+          type="text"
+          id="nombre"
+          [(ngModel)]="categoria.nombre"
+          name="nombre"
+          class="form-control"
+          placeholder="Ejemplo: Uñas, Manicure, Pedicure..."
+          required
+        />
+      </div>
+
+      <div class="acciones">
+        <button type="button" class="btn-cancelar" (click)="cancelar()">
+          <i class="bi bi-x-circle"></i> Cancelar
+        </button>
+        <button type="submit" class="btn-guardar">
+          <i class="bi bi-save"></i> Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

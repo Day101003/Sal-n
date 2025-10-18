@@ -3,10 +3,6 @@
   color: white;
 }
 
-.form-label {
-  color: hsl(22, 88%, 13%);
-}
-
 .btn-primary {
   background-color: #f0ba55;
   border: none;
@@ -14,4 +10,31 @@
 
 .btn-primary:hover {
   background-color: #b16b1b;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.calendar-day {
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #fff3e0;
+  font-weight: bold;
+}
+
+.calendar-day.ocupado {
+  background-color: #ddd;
+  color: #777;
+  cursor: not-allowed;
+}
+
+.calendar-day.seleccionado {
+  background-color: #f0ba55;
+  color: white;
 }
