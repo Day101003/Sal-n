@@ -3,14 +3,14 @@
   <section class="section hero dark-background text-center py-5">
     <div class="container">
       <h2 class="text-white">Agendá tu Cita</h2>
-      <p class="text-light">Completá los pasos para reservar tu cita 💅</p>
+      <p class="text-light">Completá los pasos para reservar tu cita </p>
     </div>
   </section>
 
   <section class="section light-background py-5">
     <div class="container">
       <div class="card shadow-lg border-0 rounded-4 p-4">
-        
+
         <div *ngIf="pasoActual === 1" data-aos="fade-up">
           <h4 class="mb-4 text-center">Paso 1: Tus Datos</h4>
 
@@ -51,17 +51,13 @@
           </div>
         </div>
 
-        
+
         <div *ngIf="pasoActual === 2" data-aos="fade-up">
           <h4 class="mb-4 text-center">Paso 2: Seleccioná Fecha y Hora</h4>
 
           <div class="calendar-grid mb-4">
-            <div
-              class="calendar-day"
-              *ngFor="let dia of diasMes"
-              [class.ocupado]="dia.ocupado"
-              [class.seleccionado]="cita.fecha === dia.fecha"
-              (click)="seleccionarDia(dia)">
+            <div class="calendar-day" *ngFor="let dia of diasMes" [class.ocupado]="dia.ocupado"
+              [class.seleccionado]="cita.fecha === dia.fecha" (click)="seleccionarDia(dia)">
               {{ dia.dia }}
             </div>
           </div>
@@ -69,16 +65,11 @@
           <div class="text-center mb-4">
             <h5>Horas Disponibles</h5>
             <div class="d-flex flex-wrap justify-content-center gap-2 mt-2">
-              <button
-                *ngFor="let hora of horas"
-                class="btn"
-                [ngClass]="{
+              <button *ngFor="let hora of horas" class="btn" [ngClass]="{
                   'btn-outline-secondary': !esHoraDisponible(hora),
                   'btn-outline-primary': esHoraDisponible(hora),
                   'active': cita.hora === hora
-                }"
-                [disabled]="!esHoraDisponible(hora)"
-                (click)="seleccionarHora(hora)">
+                }" [disabled]="!esHoraDisponible(hora)" (click)="seleccionarHora(hora)">
                 {{ hora }}
               </button>
             </div>
@@ -90,22 +81,35 @@
           </div>
         </div>
 
-        
+
         <div *ngIf="pasoActual === 3" data-aos="fade-up">
           <h4 class="mb-4 text-center">Paso 3: Confirmá tu Cita</h4>
 
-          <div class="text-center mb-3">
-            <p><strong>Nombre:</strong> {{ cita.nombre }}</p>
-            <p><strong>Servicio:</strong> {{ cita.servicio }}</p>
-            <p><strong>Fecha:</strong> {{ cita.fecha }}</p>
-            <p><strong>Hora:</strong> {{ cita.hora }}</p>
+          <div class="resumen-cita mx-auto mb-4">
+            <div class="resumen-item">
+              <i class="bi bi-person-circle"></i>
+              <span><strong>Nombre:</strong> {{ cita.nombre }}</span>
+            </div>
+            <div class="resumen-item">
+              <i class="bi bi-star"></i>
+              <span><strong>Servicio:</strong> {{ cita.servicio }}</span>
+            </div>
+            <div class="resumen-item">
+              <i class="bi bi-calendar-event"></i>
+              <span><strong>Fecha:</strong> {{ cita.fecha }}</span>
+            </div>
+            <div class="resumen-item">
+              <i class="bi bi-clock"></i>
+              <span><strong>Hora:</strong> {{ cita.hora }}</span>
+            </div>
           </div>
 
           <div class="text-center">
             <button class="btn btn-secondary me-2" (click)="cambiarPaso(2)">Atrás</button>
-            <button class="btn btn-success" (click)="confirmarCita()">Confirmar Cita</button>
+            <button class="btn btn-confirmar" (click)="confirmarCita()">Confirmar Cita</button>
           </div>
         </div>
+
       </div>
     </div>
   </section>

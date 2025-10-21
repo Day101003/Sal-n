@@ -1,8 +1,8 @@
 .module-card {
   background: #fff;
   border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .header {
@@ -17,30 +17,47 @@ h3 {
   font-weight: 600;
 }
 
+.btn-add {
+  background-color: #50280d;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn-add:hover {
+  background-color: #3a1612;
+}
+
+.table {
+  width: 100%;
+  text-align: center;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
 .table th {
-  background-color: #f0ba55;
-  color: #50280d;
+  background-color:  #f0ba55;
+  color:#50280d;
   font-weight: 600;
 }
 
-/* --- ESTADOS --- */
 .estado-activo {
-  color: #2b9348;
+  color: #198754;
   font-weight: 600;
 }
 
 .estado-inactivo {
-  color: #d90429;
+  color: #dc3545;
   font-weight: 600;
 }
 
-/* --- BOTONES --- */
+/* Acciones */
 .acciones .btn {
-  border: none;
-  padding: 6px 10px;
-  margin: 0 2px;
+  margin: 0 3px;
   border-radius: 6px;
-  transition: 0.2s;
 }
 
 .btn-edit {
@@ -53,42 +70,28 @@ h3 {
 }
 
 .btn-delete {
-  background-color: #9a031e;
+  background-color: #dc3545;
   color: white;
 }
 
 .btn-delete:hover {
-  background-color: #6a0112;
+  background-color: #b02a37;
 }
 
 .btn-activate {
-  background-color: #2b9348;
+  background-color: #198754;
   color: white;
 }
 
 .btn-activate:hover {
-  background-color: #24773a;
+  background-color: #157347;
 }
 
 .btn-deactivate {
-  background-color: #f59f00;
-  color: #50280d;
+  background-color: #6c757d;
+  color: white;
 }
 
 .btn-deactivate:hover {
-  background-color: #d49a00;
-}
-
-.btn-add {
-  background-color: #50280d;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 8px 16px;
-  transition: 0.2s;
-}
-
-.btn-add:hover {
-  background-color: #f0ba55;
-  color: #50280d;
+  background-color: #5c636a;
 }

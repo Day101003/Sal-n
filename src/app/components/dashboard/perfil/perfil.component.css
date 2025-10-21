@@ -1,0 +1,167 @@
+/* Contenedor general */
+.perfil-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  background-color: #fdf8f3;
+}
+
+/* Tarjeta del perfil */
+.perfil-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.perfil-card:hover {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+  font-size: 24px;
+  color: #50280d;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.rol {
+  font-size: 16px;
+  color: #f0ba55;
+  font-weight: 500;
+}
+
+/* Información */
+.perfil-info {
+  margin: 30px 0;
+  text-align: left;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #50280d;
+  border-bottom: 1px solid #f8ede3;
+}
+
+.info-item i {
+  color: #f0ba55;
+  font-size: 20px;
+}
+
+/* Acciones */
+.perfil-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.btn-edit,
+.btn-logout {
+  flex: 1;
+  padding: 12px 0;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-edit {
+  background-color: #f0ba55;
+  color: #50280d;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.btn-edit:hover {
+  background-color: #e0a944;
+}
+
+.btn-logout {
+  background-color: #50280d;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 14px;
+  padding: 8px 14px;
+  width: auto;
+  min-width: unset;
+  max-width: 160px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.perfil-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+
+
+.btn-logout:hover {
+  background-color: #3d1e08;
+}
+.foto-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 20px;
+}
+
+.perfil-foto {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #f0ba55;
+  transition: opacity 0.3s ease;
+}
+
+/* Botón flotante */
+.btn-edit-hover {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background-color: #f0ba55;
+  color: #50280d;
+  border-radius: 50%;
+  padding: 8px;
+  font-size: 18px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.foto-wrapper:hover .btn-edit-hover {
+  opacity: 1;
+}

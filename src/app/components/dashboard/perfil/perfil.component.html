@@ -1,0 +1,36 @@
+<div class="perfil-container">
+    <div class="perfil-card shadow-lg">
+       <div class="perfil-header">
+  <div class="foto-wrapper">
+    <img src="assets/img/img-unas/admin-profile.jpg" alt="Foto de perfil" class="perfil-foto" />
+    <a class="btn-edit-hover" [routerLink]="['/dashboard/perfil/editar']">
+      <i class="bi bi-pencil-square"></i>
+    </a>
+  </div>
+  <h2>{{ usuario?.nombre }}</h2>
+  <p class="rol">{{ usuario?.rol }}</p>
+</div>
+
+
+        <div class="perfil-info">
+            <div class="info-item">
+                <i class="bi bi-envelope"></i>
+                <span>{{ usuario?.correo }}</span>
+            </div>
+            <div class="info-item">
+                <i class="bi bi-telephone"></i>
+                <span>{{ usuario?.telefono }}</span>
+            </div>
+            <div class="info-item">
+                <i class="bi bi-calendar-check"></i>
+                <span>Miembro desde {{ usuario?.fechaRegistro | date:'dd/MM/yyyy' }}</span>
+            </div>
+        </div>
+
+        <div class="perfil-actions">
+            <button class="btn-logout">
+                <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+            </button>
+        </div>
+    </div>
+</div>

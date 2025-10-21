@@ -1,0 +1,75 @@
+.editar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  background-color: #fdf8f3;
+}
+
+.editar-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.editar-card h2 {
+  text-align: center;
+  color: #50280d;
+  margin-bottom: 30px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #50280d;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+}
+
+.botones {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.btn-guardar,
+.btn-cancelar {
+  flex: 1;
+  padding: 12px 0;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-guardar {
+  background-color: #f0ba55;
+  color: #50280d;
+}
+
+.btn-guardar:hover {
+  background-color: #e0a944;
+}
+
+.btn-cancelar {
+  background-color: #50280d;
+  color: #fff;
+}
+
+.btn-cancelar:hover {
+  background-color: #3d1e08;
+}

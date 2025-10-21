@@ -1,6 +1,6 @@
 <div class="olap-dashboard">
 
-  
+  <!-- KPIs -->
   <div class="kpi-cards">
     <div class="kpi-card">
       <i class="bi bi-cart-check"></i>
@@ -25,25 +25,46 @@
         <p>11%</p>
       </div>
     </div>
+
+    <div class="kpi-card">
+      <i class="bi bi-people-fill"></i>
+      <div>
+        <h4>Clientes Nuevos</h4>
+        <p>43</p>
+      </div>
+    </div>
   </div>
 
-  <div class="charts-grid">
-
+  <!-- Fila 1: Ventas -->
+  <div class="chart-row">
     <div class="chart-card">
       <h5>Ventas Mensuales</h5>
       <canvas id="chartVentasMensuales"></canvas>
     </div>
-
     <div class="chart-card">
       <h5>Ventas por Servicio</h5>
       <canvas id="chartServicios"></canvas>
     </div>
+  </div>
 
+  <!-- Fila 2: Clientes -->
+  <div class="chart-row">
+    <div class="chart-card">
+      <h5>Clientes por Mes</h5>
+      <canvas id="chartClientes"></canvas>
+    </div>
+    <div class="chart-card">
+      <h5>Servicios Populares</h5>
+      <canvas id="chartPopulares"></canvas>
+    </div>
+  </div>
+
+  <!-- Fila 3: Métodos y canales -->
+  <div class="chart-row">
     <div class="chart-card">
       <h5>Métodos de Pago</h5>
       <canvas id="chartPagos"></canvas>
     </div>
-
     <div class="chart-card">
       <h5>Canales de Venta</h5>
       <canvas id="chartCanales"></canvas>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuarios',
@@ -9,28 +10,32 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./usuarios.component.css']
 })
 export class UsuariosComponent {
+
   usuarios = [
-    { nombre: 'Jessica Monge', rol: 'Administrador', correo: 'jessica@nailsstudio.com', estado: 'Activo' },
-    { nombre: 'María Gómez', rol: 'Recepcionista', correo: 'maria@nailsstudio.com', estado: 'Activo' },
-    { nombre: 'Ana López', rol: 'Manicurista', correo: 'ana@nailsstudio.com', estado: 'Inactivo' },
+    { nombre: 'María López', rol: 'Administradora', correo: 'maria@salon.com', estado: 'Activo' },
+    { nombre: 'Ana Jiménez', rol: 'Recepcionista', correo: 'ana@salon.com', estado: 'Inactivo' },
+    { nombre: 'Sofía Vargas', rol: 'Manicurista', correo: 'sofia@salon.com', estado: 'Activo' }
   ];
 
+  constructor(private router: Router) {}
+
   nuevoUsuario() {
-    alert('🟢 Agregar nuevo usuario (función pendiente)');
+    this.router.navigate(['/dashboard/usuarios/crear']);
   }
 
-  cambiarEstado(u: any) {
-    u.estado = u.estado === 'Activo' ? 'Inactivo' : 'Activo';
+  editarUsuario(index: number) {
+    this.router.navigate([`/dashboard/usuarios/editar/${index}`]);
   }
 
-  editarUsuario(u: any) {
-    alert(`✏️ Editando usuario: ${u.nombre}`);
-  }
-
-  eliminarUsuario(u: any) {
-    const confirmar = confirm(`❌ ¿Seguro que deseas eliminar a ${u.nombre}?`);
-    if (confirmar) {
-      this.usuarios = this.usuarios.filter(user => user !== u);
+  eliminarUsuario(usuario: any) {
+    const confirmacion = confirm(`¿Deseas eliminar a ${usuario.nombre}?`);
+    if (confirmacion) {
+      this.usuarios = this.usuarios.filter(u => u !== usuario);
+      alert(`Usuario ${usuario.nombre} eliminado ✅`);
     }
+  }
+
+  cambiarEstado(usuario: any) {
+    usuario.estado = usuario.estado === 'Activo' ? 'Inactivo' : 'Activo';
   }
 }

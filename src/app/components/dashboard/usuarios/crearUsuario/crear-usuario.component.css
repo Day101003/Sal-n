@@ -1,0 +1,55 @@
+.module-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+h3 {
+  color: #50280d;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  color: #50280d;
+  font-weight: 500;
+}
+
+.btn-save {
+  background-color: #f0ba55;
+  color: #50280d;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  transition: 0.3s;
+}
+
+.btn-save:hover {
+  background-color: #d29a3a;
+}
+
+.btn-secondary {
+  background-color: #50280d;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  transition: 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #442a25;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

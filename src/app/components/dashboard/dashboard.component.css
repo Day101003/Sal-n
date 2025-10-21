@@ -1,6 +1,33 @@
 /* === SIDEBAR GENERAL === */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+    z-index: 1000;
+  }
+
+  .sidebar nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  .sidebar nav ul li {
+    margin: 0;
+  }
+
+  .main-content {
+    margin-left: 0;
+    margin-top: 60px;
+  }
+}
+
 .sidebar {
-  background: linear-gradient(180deg, #2b1205 0%, #4b1f0b 100%);
+  background: linear-gradient(180deg, #754024 0%, #361708 100%);
   color: #fff;
   width: 230px;
   height: 100vh;

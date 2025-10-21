@@ -16,3 +16,13 @@
   z-index: 9999;
   position: relative;
 }
+.works-swiper .swiper-slide img {
+  max-height: 350px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 12px;
+}
+.works-swiper .card {
+  max-width: 280px;
+  margin: auto;
+}

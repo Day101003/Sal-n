@@ -1,0 +1,85 @@
+<div class="module-card fade-in">
+  <h3>Agendar Nueva Cita</h3>
+
+  <form (ngSubmit)="guardarCita()" class="mt-4">
+    <div class="row gy-3">
+      <div class="col-md-6">
+        <label for="cliente" class="form-label fw-bold">Nombre del Cliente</label>
+        <input
+          type="text"
+          id="cliente"
+          [(ngModel)]="cita.cliente"
+          name="cliente"
+          class="form-control"
+          placeholder="Ejemplo: María López"
+          required
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="servicio" class="form-label fw-bold">Servicio</label>
+        <select
+          id="servicio"
+          [(ngModel)]="cita.servicio"
+          name="servicio"
+          class="form-select"
+          required
+        >
+          <option value="">-- Seleccioná un servicio --</option>
+          <option>Manicure Gel</option>
+          <option>Pedicure Spa</option>
+          <option>Soft Gel</option>
+          <option>Diseño Personalizado</option>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <label for="fecha" class="form-label fw-bold">Fecha</label>
+        <input
+          type="date"
+          id="fecha"
+          [(ngModel)]="cita.fecha"
+          name="fecha"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="hora" class="form-label fw-bold">Hora</label>
+        <input
+          type="time"
+          id="hora"
+          [(ngModel)]="cita.hora"
+          name="hora"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="estado" class="form-label fw-bold">Estado</label>
+        <select
+          id="estado"
+          [(ngModel)]="cita.estado"
+          name="estado"
+          class="form-select"
+          required
+        >
+          <option>Pendiente</option>
+          <option>Confirmada</option>
+          <option>Cancelada</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="text-end mt-4">
+      <button type="submit" class="btn btn-save me-2">
+        <i class="bi bi-check-circle"></i> Guardar
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="cancelar()">
+        <i class="bi bi-x-circle"></i> Cancelar
+      </button>
+    </div>
+  </form>
+</div>

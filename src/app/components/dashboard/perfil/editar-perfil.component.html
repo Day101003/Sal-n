@@ -1,0 +1,28 @@
+<div class="editar-container">
+  <div class="editar-card">
+    <h2>Editar Perfil</h2>
+
+    <form (ngSubmit)="guardarCambios()" #form="ngForm">
+      <label>Nombre</label>
+      <input type="text" [(ngModel)]="usuario.nombre" name="nombre" required />
+
+      <label>Correo</label>
+      <input type="email" [(ngModel)]="usuario.correo" name="correo" required />
+
+      <label>Teléfono</label>
+      <input type="text" [(ngModel)]="usuario.telefono" name="telefono" required />
+
+      <label>Rol</label>
+      <select [(ngModel)]="usuario.rol" name="rol">
+        <option>Administrador</option>
+        <option>Recepcionista</option>
+        <option>Estilista</option>
+      </select>
+
+      <div class="botones">
+        <button type="submit" [disabled]="form.invalid" class="btn-guardar">Guardar</button>
+        <button type="button" (click)="cancelar()" class="btn-cancelar">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -15,6 +15,8 @@ import { FooterComponent } from './components/footer/footer.component';
 export class AppComponent {
   esDashboard = false;
   esAgendarCita = false;
+  esLogin = false;
+  esRegister = false;
 
   constructor(private router: Router) {
     this.router.events
@@ -23,6 +25,8 @@ export class AppComponent {
         const url = event.urlAfterRedirects;
         this.esDashboard = url.startsWith('/dashboard');
         this.esAgendarCita = url.startsWith('/agendar-cita');
+        this.esLogin = url.startsWith('/login');
+        this.esRegister = url.startsWith('/register');
       });
   }
 }

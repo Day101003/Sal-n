@@ -1,6 +1,6 @@
 <div class="module-card">
   <div class="header">
-    <h3> Usuarios Administrativos</h3>
+    <h3>Usuarios Administrativos</h3>
     <button class="btn btn-add" (click)="nuevoUsuario()">
       <i class="bi bi-plus-circle"></i> Nuevo Usuario
     </button>
@@ -17,7 +17,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let u of usuarios">
+      <tr *ngFor="let u of usuarios; let i = index">
         <td>{{ u.nombre }}</td>
         <td>{{ u.rol }}</td>
         <td>{{ u.correo }}</td>
@@ -35,7 +35,7 @@
             (click)="cambiarEstado(u)">
             <i [class]="u.estado === 'Activo' ? 'bi bi-person-x' : 'bi bi-person-check'"></i>
           </button>
-          <button class="btn btn-sm btn-edit" (click)="editarUsuario(u)">
+          <button class="btn btn-sm btn-edit" (click)="editarUsuario(i)">
             <i class="bi bi-pencil-square"></i>
           </button>
           <button class="btn btn-sm btn-delete" (click)="eliminarUsuario(u)">

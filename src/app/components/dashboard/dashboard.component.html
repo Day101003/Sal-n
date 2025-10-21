@@ -10,12 +10,12 @@
       </a>
     <nav>
       <ul>
-         <li><a routerLink="/dashboard/olap" routerLinkActive="active">Reportes OLAP</a></li>
-        <li><a routerLink="/dashboard/inventario" routerLinkActive="active">Inventario</a></li>
-        <li><a routerLink="/dashboard/servicios" routerLinkActive="active">Servicios</a></li>
-        <li><a routerLink="/dashboard/categorias" routerLinkActive="active">Categorías</a></li>
-        <li><a routerLink="/dashboard/citas" routerLinkActive="active">Citas</a></li>
-        <li><a routerLink="/dashboard/usuarios" routerLinkActive="active">Usuarios</a></li>
+         <li><a routerLink="/dashboard/olap" routerLinkActive="active"><i class="bi bi-bar-chart-fill"></i> Reportes OLAP</a></li>
+        <li><a routerLink="/dashboard/inventario" routerLinkActive="active"><i class="bi bi-box-seam"></i> Inventario</a></li>
+        <li><a routerLink="/dashboard/servicios" routerLinkActive="active"><i class="bi bi-scissors"></i> Servicios</a></li>
+        <li><a routerLink="/dashboard/categorias" routerLinkActive="active"><i class="bi bi-tags-fill"></i> Categorías</a></li>
+        <li><a routerLink="/dashboard/citas" routerLinkActive="active"><i class="bi bi-calendar-check"></i> Citas</a></li>
+        <li><a routerLink="/dashboard/usuarios" routerLinkActive="active"><i class="bi bi-people-fill"></i> Usuarios</a></li>
        
       </ul>
     </nav>
@@ -23,13 +23,12 @@
 
 
   <div class="main-content">
-    
-    <header class="topbar">
-      <div class="user-info">
-        <span class="username"> Day Admin</span>
-        
-      </div>
-    </header>
+  <header class="topbar">
+  <div class="user-info">
+    <a class="username" routerLink="/dashboard/perfil" routerLinkActive="active"><img src="assets/img/img-unas/admin-profile.jpg" alt="Logo" class="img-fluid" style="width: 40 px; height: 30px; "> Day Admin</a>
+  </div>
+</header>
+
 
     <main class="content">
       <router-outlet></router-outlet>

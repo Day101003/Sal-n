@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-citas',
@@ -9,29 +10,30 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./citas.component.css']
 })
 export class CitasComponent {
+
   citas = [
-    { fecha_hora: new Date('2025-10-18T10:30:00'), usuario: 'María Gómez', servicio: 'Manicure Gel', estado: 'Pendiente' },
-    { fecha_hora: new Date('2025-10-18T13:00:00'), usuario: 'Ana López', servicio: 'Pedicure Spa', estado: 'Confirmada' },
-    { fecha_hora: new Date('2025-10-19T09:00:00'), usuario: 'Laura Torres', servicio: 'Soft Gel', estado: 'Cancelada' },
+    { fecha_hora: new Date('2025-10-22T10:00:00'), usuario: 'María López', servicio: 'Manicure Gel', estado: 'Pendiente' },
+    { fecha_hora: new Date('2025-10-23T14:00:00'), usuario: 'Sofía Vargas', servicio: 'Pedicure Spa', estado: 'Confirmada' },
+    { fecha_hora: new Date('2025-10-24T16:00:00'), usuario: 'Ana Jiménez', servicio: 'Soft Gel', estado: 'Cancelada' }
   ];
 
+  constructor(private router: Router) {}
+
   nuevaCita() {
-    alert('🟢 Crear nueva cita (función pendiente)');
+    this.router.navigate(['/dashboard/citas/crear']);
   }
 
-  confirmarCita(c: any) {
-    c.estado = 'Confirmada';
-    alert(`✅ Cita confirmada para ${c.usuario} el ${c.fecha_hora}`);
+  editarCita(index: number) {
+    this.router.navigate([`/dashboard/citas/editar/${index}`]);
   }
 
-  editarCita(c: any) {
-    alert(`✏️ Editando cita de ${c.usuario}`);
+  confirmarCita(cita: any) {
+    cita.estado = 'Confirmada';
+    alert(`✅ Cita confirmada para ${cita.usuario}`);
   }
 
-  cancelarCita(c: any) {
-    const confirmar = confirm(`❌ ¿Cancelar la cita de ${c.usuario}?`);
-    if (confirmar) {
-      c.estado = 'Cancelada';
-    }
+  cancelarCita(cita: any) {
+    cita.estado = 'Cancelada';
+    alert(`❌ Cita cancelada para ${cita.usuario}`);
   }
 }

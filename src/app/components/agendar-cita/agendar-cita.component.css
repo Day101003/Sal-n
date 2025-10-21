@@ -1,5 +1,5 @@
 .hero {
-  background: linear-gradient(135deg, #1a1001, #50280d);
+  background: linear-gradient(135deg, #cec1ad, #cfad7b);
   color: white;
 }
 
@@ -37,4 +37,69 @@
 .calendar-day.seleccionado {
   background-color: #f0ba55;
   color: white;
+}
+.resumen-cita {
+  background-color: #fff8f0;
+  border: 2px solid #c49848;
+  border-radius: 16px;
+  padding: 25px;
+  max-width: 410px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+.resumen-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  color: #50280d;
+  margin-bottom: 12px;
+}
+
+.resumen-item i {
+  font-size: 20px;
+  color: #f0ba55;
+}
+
+.btn-confirmar {
+  background-color: #71b18a;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-confirmar:hover {
+  background-color: #58866a;
+}
+
+.btn-outline-primary {
+  border: 2px solid #f0ba55;
+  color: #50280d;
+  background-color: #fffdf9;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #f0ba55;
+  color: white;
+}
+
+.btn-outline-secondary {
+  border: 2px solid #ccc;
+  color: #999;
+  background-color: #f8f8f8;
+  cursor: not-allowed;
+}
+
+/* Botón activo (seleccionado) */
+.btn.active {
+  background-color: #f0ba55 !important;
+  color: white !important;
+  border-color: #f0ba55 !important;
 }

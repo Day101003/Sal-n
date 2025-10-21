@@ -5,3 +5,23 @@
   border-radius: 6px;
   font-weight: bold;
 }
+
+.auth-buttons .cta-btn {
+  background-color: #f0ba55;
+  color: #50280d;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.auth-buttons .cta-btn:hover {
+  background-color: #d29a3a;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.auth-buttons {
+  gap: 10px; /* espacio uniforme entre botones */
+}
