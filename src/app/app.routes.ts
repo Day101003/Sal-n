@@ -18,9 +18,9 @@ export const routes: Routes = [
 
   { path: '', component: HomeComponent },
   {
-  path: 'contacto',
-  loadComponent: () => import('./components/home/contacto/contacto.component').then(m => m.ContactoComponent)
-},
+    path: 'contacto',
+    loadComponent: () => import('./components/home/contacto/contacto.component').then(m => m.ContactoComponent)
+  },
 
 
   {

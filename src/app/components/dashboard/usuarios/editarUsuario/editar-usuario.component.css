@@ -4,17 +4,35 @@
   padding: 25px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   animation: fadeIn 0.5s ease-in-out;
+  max-width: 900px;
+  margin: auto;
 }
 
 h3 {
   color: #50280d;
   font-weight: 600;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .form-label {
   color: #50280d;
   font-weight: 500;
+}
+
+.form-control,
+.form-select,
+textarea {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus,
+.form-select:focus,
+textarea:focus {
+  border-color: #f0ba55;
+  box-shadow: 0 0 0 0.2rem rgba(240, 186, 85, 0.25);
 }
 
 .btn-save {
@@ -52,4 +70,16 @@ h3 {
     opacity: 1;
     transform: translateY(0);
   }
+}
+.vista-img-derecha {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.vista-img-derecha img {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border: 1px solid #f0ba55;
+  border-radius: 5%;
 }

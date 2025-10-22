@@ -9,20 +9,13 @@
         <input type="text" class="form-control" [(ngModel)]="producto.nombre" name="nombre" required />
       </div>
 
-      <div class="col-md-6">
-        <label class="form-label">Unidad</label>
-        <input type="text" class="form-control" [(ngModel)]="producto.unidad" name="unidad" placeholder="Ej: ml, g, unidades" required />
-      </div>
-
+      
       <div class="col-md-4">
         <label class="form-label">Stock Actual</label>
         <input type="number" class="form-control" [(ngModel)]="producto.stock" name="stock" min="0" required />
       </div>
 
-      <div class="col-md-4">
-        <label class="form-label">Stock Mínimo</label>
-        <input type="number" class="form-control" [(ngModel)]="producto.minimo" name="minimo" min="0" required />
-      </div>
+    
 
       <div class="col-md-4">
         <label class="form-label">Costo (₡)</label>
@@ -37,15 +30,7 @@
         </select>
       </div>
 
-      <div class="col-md-6">
-        <label class="form-label">Categoría</label>
-        <select class="form-select" [(ngModel)]="producto.categoria" name="categoria">
-          <option value="Manicure">Manicure</option>
-          <option value="Pedicure">Pedicure</option>
-          <option value="Extensiones">Extensiones</option>
-          <option value="Tratamientos">Tratamientos</option>
-        </select>
-      </div>
+     
 
     </div>
 

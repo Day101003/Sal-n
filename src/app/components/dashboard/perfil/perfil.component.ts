@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
 })
 export class PerfilComponent {
   usuario = {
-    nombre: 'Day Admin',
+    nombre: 'Dayanna Solano',
     rol: 'Administrador',
     correo: 'dayadmin@nailsstudio.com',
     telefono: '+506 8888-9999',

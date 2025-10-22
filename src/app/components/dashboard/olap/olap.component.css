@@ -63,9 +63,77 @@
   width: 100% !important;
   height: 260px !important; /* 👈 altura uniforme para todos los canvas */
 }
-.chart-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+
+.chart-layout {
+  display: flex;
   gap: 25px;
   margin-bottom: 30px;
+}
+
+.chart-left {
+  flex: 2;
+}
+
+.chart-right {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.chart-row-top {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Tarjeta más ancha */
+.chart-card-ventas {
+  flex: 2;
+  height: 280px;
+  background: #fffdf9;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Tarjeta más estrecha */
+.chart-card-canales {
+  flex: 1;
+  height: 280px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.chart-card-medium {
+  height: 260px;
+}
+
+.chart-row-bottom {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.chart-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chart-card h5 {
+  color: #50280d;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.chart-card canvas {
+  width: 100% !important;
+  height: calc(100% - 40px) !important;
 }

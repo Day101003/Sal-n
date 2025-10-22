@@ -11,21 +11,28 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./editar-servicio.component.css'],
 })
 export class EditarServicioComponent {
-  esEdicion = true;
+  esEdicion = false;
 
   servicio = {
     nombre: '',
-    categoria: '',
-    precio: 0,
+    descripcion: '',
+    costo: 0,
+    duracion_estimada: '',
+    estado: 1,
+    id_categoria: ''
   };
 
-  constructor(private router: Router, private route: ActivatedRoute) {
-    const id = this.route.snapshot.paramMap.get('id');
-    console.log('🟢 Editando servicio con ID:', id);
-  }
+  categorias = [
+    { id: 1, nombre: 'Manicure' },
+    { id: 2, nombre: 'Pedicure' },
+    { id: 3, nombre: 'Uñas Acrílicas' },
+    { id: 4, nombre: 'Spa' }
+  ];
+
+  constructor(private router: Router) {}
 
   guardarCambios() {
-    alert('✅ Servicio actualizado correctamente');
+    alert(`💅 Servicio "${this.servicio.nombre}" creado correctamente.`);
     this.router.navigate(['/dashboard/servicios']);
   }
 

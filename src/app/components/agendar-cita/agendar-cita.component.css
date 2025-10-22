@@ -103,3 +103,52 @@
   color: white !important;
   border-color: #f0ba55 !important;
 }
+/* --- Encabezado del calendario --- */
+.calendar-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.month-name {
+  color: #50280d;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+}
+
+.btn-nav {
+  background-color: #d4ba89;
+  border: none;
+  border-radius: 50%;
+  color: #50280d;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.btn-nav:hover {
+  background-color: #d3a350;
+}
+
+/* Días de la semana */
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  color: #50280d;
+  font-weight: 680;
+  margin-bottom: 6px;
+   gap: 10px;
+}
+
+.weekday {
+  background-color: #f7e8cf;
+  border-radius: 6px;
+  padding: 6px;
+  font-size: 15px;
+}

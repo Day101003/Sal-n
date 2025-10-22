@@ -1,8 +1,8 @@
 .module-card {
   background: #fff;
   border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .header {
@@ -19,16 +19,33 @@ h3 {
 
 .table th {
   background-color: #f0ba55;
-  color: #50280d;
+  color: #fff;
   font-weight: 600;
 }
 
+.table td {
+  color: #50280d;
+  vertical-align: middle;
+}
+
+/* Estados */
+.estado-activo {
+  color: #1b9448;
+  font-weight: 600;
+}
+
+.estado-inactivo {
+  color: #c03232;
+  font-weight: 600;
+}
+
+/* Botones */
 .acciones .btn {
   border: none;
   padding: 6px 10px;
-  margin: 0 2px;
+  margin: 0 3px;
   border-radius: 6px;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
 .btn-edit {
@@ -53,9 +70,10 @@ h3 {
   background-color: #50280d;
   color: #fff;
   border: none;
-  border-radius: 6px;
-  padding: 8px 16px;
-  transition: 0.2s;
+  border-radius: 8px;
+  padding: 8px 18px;
+  transition: 0.3s;
+  font-weight: 500;
 }
 
 .btn-add:hover {

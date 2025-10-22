@@ -11,11 +11,31 @@ import { Router } from '@angular/router';
 })
 export class UsuariosComponent {
 
-  usuarios = [
-    { nombre: 'María López', rol: 'Administradora', correo: 'maria@salon.com', estado: 'Activo' },
-    { nombre: 'Ana Jiménez', rol: 'Recepcionista', correo: 'ana@salon.com', estado: 'Inactivo' },
-    { nombre: 'Sofía Vargas', rol: 'Manicurista', correo: 'sofia@salon.com', estado: 'Activo' }
-  ];
+usuarios = [
+  {
+    nombre: 'Junior Bell',
+    telefono: '8888-1234',
+    correo: 'Junior@salon.com',
+    fecha_registro: new Date('2025-01-10'),
+    ruta_img: 'assets/img/img-unas/JUNIOR.jpg'
+  },
+  {
+    nombre: 'Dayanna Solano',
+    telefono: '8888-5678',
+    correo: 'day@salon.com',
+    fecha_registro: new Date('2025-03-22'),
+    ruta_img: 'assets/img/img-unas/dAY.png'
+  },
+  {
+    nombre: 'Ale Jiménez',
+    telefono: '8888-9012',
+    correo: 'sofia@salon.com',
+    fecha_registro: new Date('2025-05-15'),
+    ruta_img: 'assets/img/img-unas/Ale.jpg'
+  }
+];
+
+
 
   constructor(private router: Router) {}
 

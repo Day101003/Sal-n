@@ -52,34 +52,63 @@
         </div>
 
 
-        <div *ngIf="pasoActual === 2" data-aos="fade-up">
-          <h4 class="mb-4 text-center">Paso 2: Seleccioná Fecha y Hora</h4>
+       <div *ngIf="pasoActual === 2" data-aos="fade-up">
+  <h4 class="mb-4 text-center">Paso 2: Seleccioná Fecha y Hora</h4>
 
-          <div class="calendar-grid mb-4">
-            <div class="calendar-day" *ngFor="let dia of diasMes" [class.ocupado]="dia.ocupado"
-              [class.seleccionado]="cita.fecha === dia.fecha" (click)="seleccionarDia(dia)">
-              {{ dia.dia }}
-            </div>
-          </div>
+  <!-- Encabezado del calendario -->
+  <div class="calendar-header text-center mb-3">
+    <button class="btn-nav" (click)="mesAnterior()">
+      <i class="bi bi-chevron-left"></i>
+    </button>
 
-          <div class="text-center mb-4">
-            <h5>Horas Disponibles</h5>
-            <div class="d-flex flex-wrap justify-content-center gap-2 mt-2">
-              <button *ngFor="let hora of horas" class="btn" [ngClass]="{
-                  'btn-outline-secondary': !esHoraDisponible(hora),
-                  'btn-outline-primary': esHoraDisponible(hora),
-                  'active': cita.hora === hora
-                }" [disabled]="!esHoraDisponible(hora)" (click)="seleccionarHora(hora)">
-                {{ hora }}
-              </button>
-            </div>
-          </div>
+    <h5 class="month-name mb-0">{{ nombreMes }} {{ anioActual }}</h5>
 
-          <div class="text-center">
-            <button class="btn btn-secondary me-2" (click)="cambiarPaso(1)">Atrás</button>
-            <button class="btn btn-primary" (click)="cambiarPaso(3)">Continuar</button>
-          </div>
-        </div>
+    <button class="btn-nav" (click)="mesSiguiente()">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+
+  <!-- Días de la semana -->
+  <div class="calendar-weekdays">
+    <div *ngFor="let dia of diasSemana" class="weekday">{{ dia }}</div>
+  </div>
+
+  <!-- Días del calendario -->
+  <div class="calendar-grid mb-4">
+    <div
+      class="calendar-day"
+      *ngFor="let dia of diasMes"
+      [class.ocupado]="dia.ocupado"
+      [class.seleccionado]="cita.fecha === dia.fecha"
+      (click)="seleccionarDia(dia)">
+      {{ dia.dia }}
+    </div>
+  </div>
+
+  <!-- Horas disponibles -->
+  <div class="text-center mb-4">
+    <h5>Horas Disponibles</h5>
+    <div class="d-flex flex-wrap justify-content-center gap-2 mt-2">
+      <button
+        *ngFor="let hora of horas"
+        class="btn"
+        [ngClass]="{
+          'btn-outline-secondary': !esHoraDisponible(hora),
+          'btn-outline-primary': esHoraDisponible(hora),
+          'active': cita.hora === hora
+        }"
+        [disabled]="!esHoraDisponible(hora)"
+        (click)="seleccionarHora(hora)">
+        {{ hora }}
+      </button>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <button class="btn btn-secondary me-2" (click)="cambiarPaso(1)">Atrás</button>
+    <button class="btn btn-primary" (click)="cambiarPaso(3)">Continuar</button>
+  </div>
+</div>
 
 
         <div *ngIf="pasoActual === 3" data-aos="fade-up">

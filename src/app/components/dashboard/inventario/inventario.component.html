@@ -10,9 +10,7 @@
     <thead>
       <tr>
         <th>Nombre</th>
-        <th>Unidad</th>
         <th>Stock</th>
-        <th>Mínimo</th>
         <th>Costo (₡)</th>
         <th>Estado</th>
         <th class="text-center">Acciones</th>
@@ -21,9 +19,7 @@
     <tbody>
       <tr *ngFor="let p of productos; let i = index">
         <td>{{ p.nombre }}</td>
-        <td>{{ p.unidad }}</td>
         <td [class.bajo-stock]="p.stock <= p.minimo">{{ p.stock }}</td>
-        <td>{{ p.minimo }}</td>
         <td>{{ p.costo | currency: 'CRC' }}</td>
         <td>{{ p.estado }}</td>
         <td class="text-center">

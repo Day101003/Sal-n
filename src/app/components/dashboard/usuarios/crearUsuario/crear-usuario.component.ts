@@ -11,12 +11,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./crear-usuario.component.css']
 })
 export class CrearUsuarioComponent {
-  usuario = {
-    nombre: '',
-    correo: '',
-    rol: '',
-    estado: 'Activo'
-  };
+ usuario = {
+  nombre: '',
+  telefono: '',
+  correo: '',
+  fecha_registro: '',
+  clave: '',
+  ruta_img: '',
+  preferencias: ''
+};
+
 
   constructor(private router: Router) {}
 
@@ -28,4 +32,16 @@ export class CrearUsuarioComponent {
   cancelar() {
     this.router.navigate(['/dashboard/usuarios']);
   }
+
+  cargarImagen(event: any) {
+  const archivo = event.target.files[0];
+  if (archivo) {
+    const lector = new FileReader();
+    lector.onload = () => {
+      this.usuario.ruta_img = lector.result as string; // base64
+    };
+    lector.readAsDataURL(archivo);
+  }
+}
+
 }

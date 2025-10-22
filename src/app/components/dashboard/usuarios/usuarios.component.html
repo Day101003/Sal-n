@@ -1,48 +1,35 @@
 <div class="module-card">
   <div class="header">
-    <h3>Usuarios Administrativos</h3>
+    <h3 style="color: #000;">Usuarios Administrativos</h3>
     <button class="btn btn-add" (click)="nuevoUsuario()">
       <i class="bi bi-plus-circle"></i> Nuevo Usuario
     </button>
-  </div>
 
-  <table class="table table-striped table-hover align-middle">
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Rol</th>
-        <th>Correo</th>
-        <th>Estado</th>
-        <th class="text-center">Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let u of usuarios; let i = index">
-        <td>{{ u.nombre }}</td>
-        <td>{{ u.rol }}</td>
-        <td>{{ u.correo }}</td>
-        <td>
-          <span
-            [class.estado-activo]="u.estado === 'Activo'"
-            [class.estado-inactivo]="u.estado === 'Inactivo'">
-            {{ u.estado }}
-          </span>
-        </td>
-        <td class="text-center acciones">
-          <button
-            class="btn btn-sm"
-            [ngClass]="u.estado === 'Activo' ? 'btn-deactivate' : 'btn-activate'"
-            (click)="cambiarEstado(u)">
-            <i [class]="u.estado === 'Activo' ? 'bi bi-person-x' : 'bi bi-person-check'"></i>
-          </button>
-          <button class="btn btn-sm btn-edit" (click)="editarUsuario(i)">
-            <i class="bi bi-pencil-square"></i>
-          </button>
-          <button class="btn btn-sm btn-delete" (click)="eliminarUsuario(u)">
-            <i class="bi bi-trash"></i>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="usuarios-grid">
+  <div class="usuario-card" *ngFor="let u of usuarios; let i = index">
+    
+    <!-- Botón eliminar en esquina -->
+    <button class="btn btn-sm btn-delete btn-x" (click)="eliminarUsuario(u)">
+      <i class="bi bi-x-lg"></i>
+    </button>
+
+    <div class="usuario-img">
+  <img [src]="u.ruta_img" alt="Foto de {{ u.nombre }}" />
+  <button class="btn btn-sm btn-edit btn-edit-overlay" (click)="editarUsuario(i)">
+    <i class="bi bi-pencil-square"></i>
+  </button>
+</div>
+
+
+    <div class="usuario-info">
+      <h4>{{ u.nombre }}</h4>
+      <p><i class="bi bi-envelope"></i> {{ u.correo }}</p>
+      <p><i class="bi bi-telephone"></i> {{ u.telefono }}</p>
+      <p><i class="bi bi-calendar"></i> {{ u.fecha_registro | date: 'dd/MM/yyyy' }}</p>
+    </div>
+  </div>
+</div>
+
+
+
 </div>
