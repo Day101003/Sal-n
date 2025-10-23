@@ -1,25 +1,45 @@
 <div class="module-card">
   <div class="header">
-    <h3> Categorías</h3>
+    <h3>Categorías</h3>
     <button class="btn btn-add" routerLink="/dashboard/categorias/crear">
       <i class="bi bi-plus-circle"></i> Nueva Categoría
     </button>
   </div>
 
-  <table class="table">
+  <table class="table table-striped table-hover align-middle">
     <thead>
       <tr>
-        <th>Nombre</th>
-        <th class="text-center">Acciones</th>
+        <th style="width: 80px;">ID</th>
+        <th style="width: 180px;">Nombre</th>
+        <th>Descripción</th>
+        <th style="width: 120px;">Estado</th>
+        <th style="width: 180px;" class="text-center">Acciones</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let c of categorias; let i = index">
+        <td class="text-center">{{ c.id_categoria }}</td>
         <td>{{ c.nombre }}</td>
+        <td>{{ c.descripcion }}</td>
         <td class="text-center">
-         <button class="btn btn-sm btn-edit" [routerLink]="['/dashboard/categorias/editar', i]">
-  <i class="bi bi-pencil-square"></i>
-</button>
+          <span [class.estado-activo]="c.estado === 1"
+                [class.estado-inactivo]="c.estado === 0">
+            {{ c.estado === 1 ? 'Activo' : 'Inactivo' }}
+          </span>
+        </td>
+        <td class="text-center acciones">
+        
+          <button class="btn btn-sm" 
+                  [ngClass]="c.estado === 1 ? 'btn-deactivate' : 'btn-activate'"
+                  (click)="cambiarEstado(c)">
+            <i [class]="c.estado === 1 ? 'bi bi-person-x' : 'bi bi-person-check'"></i>
+          </button>
+
+        
+          <button class="btn btn-sm btn-edit" 
+                  [routerLink]="['/dashboard/categorias/editar', i]">
+            <i class="bi bi-pencil-square"></i>
+          </button>
 
           <button class="btn btn-sm btn-delete" (click)="eliminarCategoria(c)">
             <i class="bi bi-trash"></i>

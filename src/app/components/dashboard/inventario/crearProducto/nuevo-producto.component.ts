@@ -28,4 +28,7 @@ export class NuevoProductoComponent {
     alert(`Producto "${this.producto.nombre}" guardado correctamente ✅`);
     this.router.navigate(['/dashboard/inventario']);
   }
+  cancelar() {
+    this.router.navigate(['/dashboard/inventario']);
+  }
 }

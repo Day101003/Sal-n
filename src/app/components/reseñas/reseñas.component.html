@@ -1,0 +1,106 @@
+<section class="reviews-section py-5">
+    <div class="container">
+        <a href="/" class="btn-logo">
+  <img src="assets/img/img-unas/logo1.png" alt="Logo Nails Studio" />
+</a>
+        <h2 class="titulo-principal text-center mb-5">
+            <i class="bi bi-chat-heart"></i> Opiniones de Nuestros Clientes
+        </h2>
+
+        <div class="review-layout">
+          
+            <div class="review-summary shadow-sm p-4 rounded-4">
+                <h3 class="text-center mb-4">Valoración general</h3>
+                <div class="average text-center mb-3">
+                    <h1>{{ promedio }}</h1>
+                    <div class="stars mb-1">
+                        <i *ngFor="let s of getStars(promedioRedondeado)" class="bi bi-star-fill"></i>
+                    </div>
+                    <p>{{ resenas.length }} reseñas</p>
+                </div>
+
+                <div class="bars">
+                    <div class="bar" *ngFor="let c of conteoEstrellas; let i = index">
+                        <span class="num">{{ 5 - i }}</span>
+                        <div class="bar-bg">
+                            <div class="bar-fill" [style.width.%]="(c / resenas.length) * 100"></div>
+                        </div>
+                        <span class="count">{{ c }}</span>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="review-list">
+                <div class="review-card" *ngFor="let r of resenas">
+                    <div class="review-header">
+                        <div class="avatar"><i class="bi bi-person-circle"></i></div>
+                        <div>
+                            <h5>{{ r.nombre }}</h5>
+                            <div class="stars">
+                                <i *ngFor="let s of getStars(r.calificacion)" class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="review-text">{{ r.comentario }}</p>
+                    <span class="review-date">{{ r.fecha | date: 'dd/MM/yyyy' }}</span>
+                </div>
+
+               
+                <div class="text-center mt-4">
+                    <button class="btn-add-review" data-bs-toggle="modal" data-bs-target="#modalResena">
+                        <i class="bi bi-pencil-square me-2"></i> Agregar Reseña
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="modal fade" id="modalResena" tabindex="-1" aria-labelledby="modalResenaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content modal-resena">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="modalResenaLabel">
+                    <i class="bi bi-chat-dots-fill me-2"></i> Nueva Reseña
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form (ngSubmit)="agregarResena()" #resenaForm="ngForm">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Tu nombre</label>
+                        <input type="text" class="form-control" [(ngModel)]="nuevaResena.nombre" name="nombre"
+                            required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold d-block mb-2">Calificación</label>
+                        <div class="rating-stars text-center">
+                            <i *ngFor="let star of [1,2,3,4,5]" class="bi"
+                                [class.bi-star-fill]="star <= nuevaResena.calificacion"
+                                [class.bi-star]="star > nuevaResena.calificacion"
+                                (click)="nuevaResena.calificacion = star"></i>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Comentario</label>
+                        <textarea class="form-control" rows="3" [(ngModel)]="nuevaResena.comentario" name="comentario"
+                            required></textarea>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-enviar px-4" data-bs-dismiss="modal"
+                            [disabled]="!resenaForm.valid">
+                            <i class="bi bi-send-fill me-1"></i> Enviar Reseña
+                        </button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

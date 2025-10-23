@@ -19,9 +19,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    // Esperar un poco para asegurarse de que todo el DOM esté renderizado
     setTimeout(() => {
-      // ✅ Inicializar AOS
+     
       if (typeof AOS !== 'undefined') {
         AOS.init({
           duration: 1000,
@@ -29,7 +28,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         });
       }
 
-      // ✅ Inicializar Swiper (carrusel de trabajos)
+     
       if (typeof Swiper !== 'undefined') {
         new Swiper('.works-swiper', {
           slidesPerView: 3,
@@ -50,10 +49,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
           }
         });
       }
-    }, 600); // 0.6s para que AOS no tape los elementos
+    }, 600); 
   }
 
   irAAgendarCita(): void {
     this.router.navigate(['/agendar-cita']);
   }
+  irAServiciosPublico() {
+  this.router.navigate(['/servicios-publico']);
+}
 }

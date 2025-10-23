@@ -1,19 +1,28 @@
 <main class="contacto-page">
 
-  <!-- Sección de encabezado -->
-  <section class="hero-contacto text-center">
-    <div class="container">
-      <h2> ¡Contáctanos!</h2>
-      <p>Estamos aquí para consentirte .  
-      Escribinos, llamanos o agendá tu cita por WhatsApp.</p>
-    </div>
+  <!-- ✨ Encabezado Moderno -->
+  <section class="hero-contacto">
+    <div class="overlay"></div>
+
+    <div> <a href="/" class="container hero-content text-center">
+      <img src="assets/img/img-unas/logo1.png" alt="Logo Nails Studio" class="logo-hero" />
+      <h1 class="hero-title">¡Contáctanos!</h1>
+      <p class="hero-subtitle">
+        Estamos aquí para consentirte.  
+        Escribinos, llamanos o agendá tu cita por WhatsApp 💅
+      </p>
+      
+</a>
+    </div> 
+ 
   </section>
 
-  <!-- Sección de información -->
+  <!-- ✨ Información de contacto -->
   <section class="info-contacto container">
-    <div class="row">
+    <div class="row align-items-start">
+      <!-- Panel izquierdo -->
       <div class="col-lg-5 contact-details">
-        <h3>Información del Salón</h3>
+        <h3><i class="bi bi-geo-alt-fill me-2"></i> Información del Salón</h3>
         <ul>
           <li><i class="bi bi-geo-alt"></i> Calle Central, Limón, Costa Rica</li>
           <li><i class="bi bi-telephone"></i> +506 8888-9999</li>
@@ -21,7 +30,7 @@
           <li><i class="bi bi-clock"></i> Lunes a Sábado: 9:00 AM - 7:00 PM</li>
         </ul>
 
-        <div class="social-links">
+        <div class="social-links mt-3">
           <a href="https://wa.me/50688889999" target="_blank" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
           <a href="https://www.instagram.com" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
           <a href="https://www.facebook.com" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -31,7 +40,7 @@
       <!-- Formulario de contacto -->
       <div class="col-lg-7">
         <div class="contact-card shadow-lg">
-          <h4>Envíanos un mensaje</h4>
+          <h4><i class="bi bi-chat-dots-fill me-2"></i> Envíanos un mensaje</h4>
           <form (ngSubmit)="enviarMensaje()">
             <div class="mb-3">
               <label for="nombre" class="form-label fw-bold">Nombre</label>
@@ -74,15 +83,11 @@
 
             <div class="text-end">
               <button type="submit" class="btn btn-send">
-                <i class="bi bi-envelope-check"></i> Enviar Mensaje
+                <i class="bi bi-envelope-check me-1"></i> Enviar Mensaje
               </button>
 
-              <a
-                [href]="whatsappLink"
-                target="_blank"
-                class="btn btn-whatsapp"
-              >
-                <i class="bi bi-whatsapp"></i> WhatsApp
+              <a [href]="whatsappLink" target="_blank" class="btn btn-whatsapp">
+                <i class="bi bi-whatsapp me-1"></i> WhatsApp
               </a>
             </div>
           </form>

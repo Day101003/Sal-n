@@ -31,8 +31,8 @@
 }
 
 .estado {
-  padding: 4px 10px;
-  border-radius: 12px;
+  padding: 5px 3px;
+  border-radius: 13px;
   font-size: 13px;
   font-weight: 600;
 }
@@ -90,4 +90,20 @@
   background-color: #dc3545;
   color: white;
   border: none;
+}
+.cita-body p strong {
+  color: #5a3411;
+}
+
+.cita-body p i {
+  color: #f0ba55;
+}
+
+.cita-header i {
+  color: #f0ba55;
+}
+
+.cita-card:hover {
+  transform: translateY(-3px);
+  transition: 0.3s ease;
 }

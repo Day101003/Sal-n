@@ -17,6 +17,10 @@ export class AppComponent {
   esAgendarCita = false;
   esLogin = false;
   esRegister = false;
+  esServicios = false;
+  esResenas = false;
+  esContacto = false;
+ cargando = true;
 
   constructor(private router: Router) {
     this.router.events
@@ -27,6 +31,23 @@ export class AppComponent {
         this.esAgendarCita = url.startsWith('/agendar-cita');
         this.esLogin = url.startsWith('/login');
         this.esRegister = url.startsWith('/register');
+        this.esServicios = url.startsWith('/servicios');
+        this.esResenas = url.startsWith('/resenas');
+        this.esContacto = url.startsWith('/contacto');
       });
+  }
+
+   ngOnInit() {
+   
+    setTimeout(() => {
+      this.cargando = false;
+    }, 800);
+  }
+
+  onActivate() {
+    this.cargando = true;
+    setTimeout(() => {
+      this.cargando = false;
+    }, 400); 
   }
 }

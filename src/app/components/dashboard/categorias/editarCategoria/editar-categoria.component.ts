@@ -11,13 +11,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./editar-categoria.component.css']
 })
 export class EditarCategoriaComponent {
-  categoria = { nombre: 'Uñas Acrílicas' }; 
+  categoria = {
+    nombre: '',
+    descripcion: '',
+    estado: 1
+  };
 
   constructor(private router: Router) {}
 
   guardarCategoria() {
     if (this.categoria.nombre.trim()) {
-      alert(`✅ Categoría "${this.categoria.nombre}" actualizada correctamente`);
+      alert(`✅ Categoría "${this.categoria.nombre}" creada correctamente`);
       this.router.navigate(['/dashboard/categorias']);
     } else {
       alert('⚠️ El nombre de la categoría es obligatorio');

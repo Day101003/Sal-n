@@ -2,14 +2,14 @@
   <div class="header">
     <h3 style="color: black;">Citas Agendadas</h3>
     <button class="btn btn-add" (click)="nuevaCita()">
-      <i class="bi bi-plus-circle" style="color: rgb(224, 179, 80); "></i> Nueva Cita
+      <i class="bi bi-plus-circle" style="color: rgb(224, 179, 80);"></i> Nueva Cita
     </button>
   </div>
 
   <div class="citas-grid">
-    <div class="cita-card" *ngFor="let c of citas; let i = index">
+    <div class="cita-card" *ngFor="let c of citas">
       <div class="cita-header">
-        <h5>{{ c.fecha_hora | date: 'dd/MM/yyyy - hh:mm a' }}</h5>
+        <h5><i class="bi bi-calendar-event"></i> {{ c.fecha_cita | date: 'dd/MM/yyyy - hh:mm a' }}</h5>
         <span class="estado" [ngClass]="{
           'estado-pendiente': c.estado === 'Pendiente',
           'estado-confirmada': c.estado === 'Confirmada',
@@ -18,15 +18,17 @@
       </div>
 
       <div class="cita-body">
-        <p><i class="bi bi-person-circle"></i> {{ c.usuario }}</p>
-        <p><i class="bi bi-star"></i> {{ c.servicio }}</p>
+        <p><i class="bi bi-person-circle"></i> <strong>Cliente:</strong> {{ c.usuario_cliente }}</p>
+        <p><i class="bi bi-person-workspace"></i> <strong>Empleado:</strong> {{ c.usuario_empleado }}</p>
+        <p><i class="bi bi-brush"></i> <strong>Servicio:</strong> {{ c.servicio }}</p>
+        
       </div>
 
       <div class="cita-actions">
         <button class="btn btn-sm btn-confirm" *ngIf="c.estado === 'Pendiente'" (click)="confirmarCita(c)">
           <i class="bi bi-check2-circle"></i>
         </button>
-        <button class="btn btn-sm btn-edit" (click)="editarCita(i)">
+        <button class="btn btn-sm btn-edit" (click)="editarCita(c.id_cita)">
           <i class="bi bi-pencil-square"></i>
         </button>
         <button class="btn btn-sm btn-delete" (click)="cancelarCita(c)">

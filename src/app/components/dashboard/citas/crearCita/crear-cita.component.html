@@ -1,50 +1,66 @@
-<div class="module-card fade-in">
-  <h3>Agendar Nueva Cita</h3>
+<div class="form-card fade-in">
+  <h3><i class="bi bi-calendar-plus"></i> Agendar Nueva Cita</h3>
 
   <form (ngSubmit)="guardarCita()" class="mt-4">
     <div class="row gy-3">
+
+      <!-- CLIENTE -->
       <div class="col-md-6">
-        <label for="cliente" class="form-label fw-bold">Nombre del Cliente</label>
-        <input
-          type="text"
+        <label for="cliente" class="form-label fw-bold">Cliente</label>
+          <textarea
           id="cliente"
-          [(ngModel)]="cita.cliente"
-          name="cliente"
+          [(ngModel)]="cita.id_usuario_cliente"
+          name="id_usuario_cliente"
           class="form-control"
-          placeholder="Ejemplo: María López"
           required
-        />
+          ></textarea>
+         
       </div>
 
+      <!-- EMPLEADO -->
+      <div class="col-md-6">
+        <label for="empleado" class="form-label fw-bold">Empleado</label>
+        <select
+          id="empleado"
+          [(ngModel)]="cita.id_usuario_empleado"
+          name="id_usuario_empleado"
+          class="form-select"
+          required
+        >
+          <option value="">-- Seleccioná el empleado --</option>
+          <option *ngFor="let e of empleados" [value]="e.id">{{ e.nombre }}</option>
+        </select>
+      </div>
+
+      <!-- SERVICIO -->
       <div class="col-md-6">
         <label for="servicio" class="form-label fw-bold">Servicio</label>
         <select
           id="servicio"
-          [(ngModel)]="cita.servicio"
-          name="servicio"
+          [(ngModel)]="cita.id_servicio"
+          name="id_servicio"
           class="form-select"
           required
         >
-          <option value="">-- Seleccioná un servicio --</option>
-          <option>Manicure Gel</option>
-          <option>Pedicure Spa</option>
-          <option>Soft Gel</option>
-          <option>Diseño Personalizado</option>
+          <option value="">-- Seleccioná el servicio --</option>
+          <option *ngFor="let s of servicios" [value]="s.id">{{ s.nombre }}</option>
         </select>
       </div>
 
+      <!-- FECHA -->
       <div class="col-md-6">
         <label for="fecha" class="form-label fw-bold">Fecha</label>
         <input
           type="date"
           id="fecha"
-          [(ngModel)]="cita.fecha"
-          name="fecha"
+          [(ngModel)]="cita.fecha_cita"
+          name="fecha_cita"
           class="form-control"
           required
         />
       </div>
 
+      <!-- HORA -->
       <div class="col-md-6">
         <label for="hora" class="form-label fw-bold">Hora</label>
         <input
@@ -57,6 +73,7 @@
         />
       </div>
 
+      <!-- ESTADO -->
       <div class="col-md-6">
         <label for="estado" class="form-label fw-bold">Estado</label>
         <select
@@ -66,13 +83,27 @@
           class="form-select"
           required
         >
-          <option>Pendiente</option>
-          <option>Confirmada</option>
-          <option>Cancelada</option>
+          <option value="Pendiente">Pendiente</option>
+          <option value="Confirmada">Confirmada</option>
+          <option value="Cancelada">Cancelada</option>
         </select>
+      </div>
+
+      <!-- OBSERVACIÓN -->
+      <div class="col-12">
+        <label for="observacion" class="form-label fw-bold">Observación</label>
+        <textarea
+          id="observacion"
+          [(ngModel)]="cita.observacion"
+          name="observacion"
+          class="form-control"
+          placeholder="Notas adicionales, instrucciones o comentarios..."
+          rows="3"
+        ></textarea>
       </div>
     </div>
 
+    <!-- BOTONES -->
     <div class="text-end mt-4">
       <button type="submit" class="btn btn-save me-2">
         <i class="bi bi-check-circle"></i> Guardar

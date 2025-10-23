@@ -1,16 +1,25 @@
 <main class="main">
 
-  <section class="section hero dark-background text-center py-5">
-    <div class="container">
-      <h2 class="text-white">Agendá tu Cita</h2>
-      <p class="text-light">Completá los pasos para reservar tu cita </p>
+  <!-- ✨ Encabezado moderno -->
+  <section class="hero-agendar">
+    <div class="overlay"></div>
+
+     <div> <a href="/" class="container hero-content text-center">
+      <img src="assets/img/img-unas/logo1.png" alt="Logo Nails Studio" class="logo-hero" />
+      <h1 class="hero-title">Agendá tu Cita</h1>
+      <p class="hero-subtitle">
+        Completá los pasos para reservar tu cita y viví una experiencia única 
+      </p>
+      </a>
     </div>
   </section>
 
+  <!-- ✨ Contenido principal -->
   <section class="section light-background py-5">
     <div class="container">
       <div class="card shadow-lg border-0 rounded-4 p-4">
 
+        <!-- Paso 1 -->
         <div *ngIf="pasoActual === 1" data-aos="fade-up">
           <h4 class="mb-4 text-center">Paso 1: Tus Datos</h4>
 
@@ -51,66 +60,56 @@
           </div>
         </div>
 
+        <!-- Paso 2 -->
+        <div *ngIf="pasoActual === 2" data-aos="fade-up">
+          <h4 class="mb-4 text-center">Paso 2: Seleccioná Fecha y Hora</h4>
 
-       <div *ngIf="pasoActual === 2" data-aos="fade-up">
-  <h4 class="mb-4 text-center">Paso 2: Seleccioná Fecha y Hora</h4>
+          <div class="calendar-header text-center mb-3">
+            <button class="btn-nav" (click)="mesAnterior()"><i class="bi bi-chevron-left"></i></button>
+            <h5 class="month-name mb-0">{{ nombreMes }} {{ anioActual }}</h5>
+            <button class="btn-nav" (click)="mesSiguiente()"><i class="bi bi-chevron-right"></i></button>
+          </div>
 
-  <!-- Encabezado del calendario -->
-  <div class="calendar-header text-center mb-3">
-    <button class="btn-nav" (click)="mesAnterior()">
-      <i class="bi bi-chevron-left"></i>
-    </button>
+          <div class="calendar-weekdays">
+            <div *ngFor="let dia of diasSemana" class="weekday">{{ dia }}</div>
+          </div>
 
-    <h5 class="month-name mb-0">{{ nombreMes }} {{ anioActual }}</h5>
+          <div class="calendar-grid mb-4">
+            <div
+              class="calendar-day"
+              *ngFor="let dia of diasMes"
+              [class.ocupado]="dia.ocupado"
+              [class.seleccionado]="cita.fecha === dia.fecha"
+              (click)="seleccionarDia(dia)">
+              {{ dia.dia }}
+            </div>
+          </div>
 
-    <button class="btn-nav" (click)="mesSiguiente()">
-      <i class="bi bi-chevron-right"></i>
-    </button>
-  </div>
+          <div class="text-center mb-4">
+            <h5>Horas Disponibles</h5>
+            <div class="d-flex flex-wrap justify-content-center gap-2 mt-2">
+              <button
+                *ngFor="let hora of horas"
+                class="btn"
+                [ngClass]="{
+                  'btn-outline-secondary': !esHoraDisponible(hora),
+                  'btn-outline-primary': esHoraDisponible(hora),
+                  'active': cita.hora === hora
+                }"
+                [disabled]="!esHoraDisponible(hora)"
+                (click)="seleccionarHora(hora)">
+                {{ hora }}
+              </button>
+            </div>
+          </div>
 
-  <!-- Días de la semana -->
-  <div class="calendar-weekdays">
-    <div *ngFor="let dia of diasSemana" class="weekday">{{ dia }}</div>
-  </div>
+          <div class="text-center">
+            <button class="btn btn-secondary me-2" (click)="cambiarPaso(1)">Atrás</button>
+            <button class="btn btn-primary" (click)="cambiarPaso(3)">Continuar</button>
+          </div>
+        </div>
 
-  <!-- Días del calendario -->
-  <div class="calendar-grid mb-4">
-    <div
-      class="calendar-day"
-      *ngFor="let dia of diasMes"
-      [class.ocupado]="dia.ocupado"
-      [class.seleccionado]="cita.fecha === dia.fecha"
-      (click)="seleccionarDia(dia)">
-      {{ dia.dia }}
-    </div>
-  </div>
-
-  <!-- Horas disponibles -->
-  <div class="text-center mb-4">
-    <h5>Horas Disponibles</h5>
-    <div class="d-flex flex-wrap justify-content-center gap-2 mt-2">
-      <button
-        *ngFor="let hora of horas"
-        class="btn"
-        [ngClass]="{
-          'btn-outline-secondary': !esHoraDisponible(hora),
-          'btn-outline-primary': esHoraDisponible(hora),
-          'active': cita.hora === hora
-        }"
-        [disabled]="!esHoraDisponible(hora)"
-        (click)="seleccionarHora(hora)">
-        {{ hora }}
-      </button>
-    </div>
-  </div>
-
-  <div class="text-center">
-    <button class="btn btn-secondary me-2" (click)="cambiarPaso(1)">Atrás</button>
-    <button class="btn btn-primary" (click)="cambiarPaso(3)">Continuar</button>
-  </div>
-</div>
-
-
+        <!-- Paso 3 -->
         <div *ngIf="pasoActual === 3" data-aos="fade-up">
           <h4 class="mb-4 text-center">Paso 3: Confirmá tu Cita</h4>
 

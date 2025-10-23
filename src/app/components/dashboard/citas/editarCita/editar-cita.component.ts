@@ -11,21 +11,35 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./editar-cita.component.css']
 })
 export class EditarCitaComponent {
+ 
+
+  empleados = [
+    { id: 10, nombre: 'Dayanna' },
+    { id: 11, nombre: 'Alejandra' },
+    { id: 12, nombre: 'Junior' }
+  ];
+
+  servicios = [
+    { id: 100, nombre: 'Manicure Gel' },
+    { id: 101, nombre: 'Pedicure Spa' },
+    { id: 102, nombre: 'Soft Gel' },
+    { id: 103, nombre: 'Diseño Personalizado' }
+  ];
+
   cita = {
-    cliente: 'María López',
-    servicio: 'Manicure Gel',
-    fecha: '2025-10-20',
-    hora: '10:00',
-    estado: 'Confirmada'
+    id_usuario_cliente: '',
+    id_usuario_empleado: '',
+    id_servicio: '',
+    fecha_cita: '',
+    hora: '',
+    estado: 'Pendiente',
+    observacion: ''
   };
 
-  constructor(private router: Router, private route: ActivatedRoute) {
-    const id = this.route.snapshot.paramMap.get('id');
-    console.log('✏️ Editando cita ID:', id);
-  }
+  constructor(private router: Router) {}
 
   guardarCita() {
-    alert(`✅ Cita actualizada para ${this.cita.cliente}`);
+    alert(`✅ Cita agendada correctamente para ${this.cita.fecha_cita} a las ${this.cita.hora}`);
     this.router.navigate(['/dashboard/citas']);
   }
 

@@ -114,3 +114,90 @@
   color: #e9e2dd;
   margin: 0;
 }
+/* === 🔍 BUSCADOR SUPERIOR === */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background: #ffffff;
+  border-bottom: 2px solid #f0ba55;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* --- Buscador --- */
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #fff8ef;
+  border: 2px solid #f0ba55;
+  border-radius: 50px;
+  padding: 6px 14px;
+  width: 320px;
+  transition: all 0.3s ease;
+}
+
+.search-bar:hover,
+.search-bar:focus-within {
+  background-color: #fffdf8;
+  box-shadow: 0 0 0 4px rgba(240, 186, 85, 0.2);
+}
+
+.search-bar i {
+  color: #c0923c;
+  font-size: 1.1rem;
+  margin-right: 8px;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 0.95rem;
+  color: #50280d;
+}
+
+/* --- Usuario --- */
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #f0ba55;
+  box-shadow: 0 0 4px rgba(240, 186, 85, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.user-avatar:hover {
+  transform: scale(1.05);
+}
+
+.username span {
+  font-weight: 600;
+  color: #50280d;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .search-bar {
+    width: 200px;
+    padding: 5px 10px;
+  }
+
+  .search-bar input {
+    font-size: 0.85rem;
+  }
+
+  .username span {
+    display: none; /* solo muestra la imagen en móviles */
+  }
+}

@@ -1,4 +1,4 @@
-/* === Fondo general === */
+
 .login-container {
   display: flex;
   justify-content: center;
@@ -16,7 +16,7 @@
   100% { background-position: 0% 50%; }
 }
 
-/* === Tarjeta de login === */
+
 .login-card {
   background: #fff;
   padding: 40px 30px;

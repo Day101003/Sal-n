@@ -11,7 +11,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./crear-categoria.component.css']
 })
 export class CrearCategoriaComponent {
-  categoria = { nombre: '' };
+  categoria = {
+    nombre: '',
+    descripcion: '',
+    estado: 1
+  };
 
   constructor(private router: Router) {}
 

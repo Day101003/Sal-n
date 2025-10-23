@@ -1,10 +1,12 @@
 <div class="overlay">
   <div class="modal-card animate-fade">
     <h3 class="modal-title">
-      <i class="bi bi-pencil-square"></i> Editar Categoría
+      <i class="bi bi-folder-plus"></i> Editar Categoría
     </h3>
 
     <form (ngSubmit)="guardarCategoria()" class="formulario">
+
+      <!-- NOMBRE -->
       <div class="mb-3">
         <label for="nombre" class="form-label">Nombre de la categoría</label>
         <input
@@ -18,14 +20,43 @@
         />
       </div>
 
+      <!-- DESCRIPCIÓN -->
+      <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <textarea
+          id="descripcion"
+          [(ngModel)]="categoria.descripcion"
+          name="descripcion"
+          class="form-control"
+          placeholder="Describe brevemente la categoría..."
+          rows="3"
+        ></textarea>
+      </div>
+
+      <!-- ESTADO -->
+      <div class="mb-3 d-flex align-items-center justify-content-between">
+        <label for="estado" class="form-label m-0">Estado</label>
+        <select
+          id="estado"
+          [(ngModel)]="categoria.estado"
+          name="estado"
+          class="form-select estado-select"
+        >
+          <option [value]="1">Activo</option>
+          <option [value]="0">Inactivo</option>
+        </select>
+      </div>
+
+      <!-- BOTONES -->
       <div class="acciones">
         <button type="button" class="btn-cancelar" (click)="cancelar()">
           <i class="bi bi-x-circle"></i> Cancelar
         </button>
         <button type="submit" class="btn-guardar">
-          <i class="bi bi-save"></i> Guardar Cambios
+          <i class="bi bi-save"></i> Guardar
         </button>
       </div>
+
     </form>
   </div>
 </div>

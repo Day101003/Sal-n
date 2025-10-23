@@ -93,3 +93,23 @@
 .btn-cancelar:hover {
   background-color: #e0d7d0;
 }
+/* Campos */
+textarea.form-control {
+  resize: none;
+  min-height: 100px;
+}
+
+.estado-select {
+  width: 160px;
+  border: 1px solid #d8cfc8;
+  border-radius: 8px;
+  padding: 0.4rem;
+  color: #50280d;
+  font-weight: 500;
+  background-color: #fffaf3;
+}
+
+/* Animación */
+.animate-fade {
+  animation: fadeIn 0.3s ease;
+}

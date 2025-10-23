@@ -28,5 +28,8 @@ export class EditarProductoComponent {
     alert(`Producto "${this.producto.nombre}" actualizado correctamente ✅`);
     this.router.navigate(['/dashboard/inventario']);
   }
+  cancelar() {
+    this.router.navigate(['/dashboard/inventario']);
+  }
  
 }

@@ -13,14 +13,15 @@
    * Apply .scrolled class to the body as the page is scrolled down
    */
   function toggleScrolled() {
-    const selectBody = document.querySelector('body');
-    const selectHeader = document.querySelector('#header');
-    if (!selectHeader.classList.contains('scroll-up-sticky') && !selectHeader.classList.contains('sticky-top') && !selectHeader.classList.contains('fixed-top')) return;
-    window.scrollY > 100 ? selectBody.classList.add('scrolled') : selectBody.classList.remove('scrolled');
+  const header = document.querySelector('.header-principal');
+  if (header) {
+    header.classList.toggle('scrolled', window.scrollY > 50);
   }
+}
+ document.addEventListener('DOMContentLoaded', () => {
+  window.addEventListener('scroll', toggleScrolled);
+});
 
-  document.addEventListener('scroll', toggleScrolled);
-  window.addEventListener('load', toggleScrolled);
 
   /**
    * Mobile nav toggle
@@ -215,3 +216,23 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+document.addEventListener('DOMContentLoaded', function () {
+  new Swiper('.swiper', {
+    loop: true,
+    autoplay: { delay: 4000 },
+    slidesPerView: 1,
+    spaceBetween: 20,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      768: { slidesPerView: 2 },
+      1200: { slidesPerView: 3 },
+    },
+  });
+});

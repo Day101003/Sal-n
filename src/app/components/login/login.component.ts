@@ -18,7 +18,7 @@ verContrasena = false;
   constructor(private router: Router) {}
 
   iniciarSesion() {
-    // Credenciales de prueba
+    
     const correoAdmin = 'admin@nailsstudio.com';
     const passwordAdmin = '12345';
 

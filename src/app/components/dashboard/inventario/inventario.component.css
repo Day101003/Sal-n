@@ -49,6 +49,7 @@ h3 {
 .btn-edit {
   background-color: #f0ba55;
   color: #50280d;
+
 }
 
 .btn-edit:hover {
@@ -76,4 +77,16 @@ h3 {
 .btn-add:hover {
   background-color: #66453d;
   color: #ffffff;
+}
+.btn-export {
+  background-color: #ad243b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  transition: 0.2s;
+}
+
+.btn-export:hover {
+  background-color: #9a031e;
 }

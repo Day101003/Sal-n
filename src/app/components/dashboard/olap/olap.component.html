@@ -1,83 +1,55 @@
-<div class="olap-dashboard">
+<div class="olap-dashboard container-fluid py-4">
 
-  <!-- KPIs -->
+
   <div class="kpi-cards">
-    <div class="kpi-card">
-      <i class="bi bi-cart-check"></i>
-      <div>
-        <h4>Ventas Totales</h4>
-        <p>₡ 1,440,000</p>
+    <div class="kpi-card" *ngFor="let kpi of kpis">
+      <div class="kpi-icon" [style.backgroundColor]="kpi.color">
+        <i [class]="kpi.icon"></i>
       </div>
-    </div>
-
-    <div class="kpi-card">
-      <i class="bi bi-wallet2"></i>
-      <div>
-        <h4>Margen ₡</h4>
-        <p>₡ 155,800</p>
-      </div>
-    </div>
-
-    <div class="kpi-card">
-      <i class="bi bi-graph-up"></i>
-      <div>
-        <h4>Margen %</h4>
-        <p>11%</p>
-      </div>
-    </div>
-
-    <div class="kpi-card">
-      <i class="bi bi-people-fill"></i>
-      <div>
-        <h4>Clientes Nuevos</h4>
-        <p>43</p>
+      <div class="kpi-info">
+        <h6>{{ kpi.title }}</h6>
+        <h3>{{ kpi.value }}</h3>
+        <span [class.increase]="kpi.change > 0" [class.decrease]="kpi.change < 0">
+          {{ kpi.change > 0 ? '+' : '' }}{{ kpi.change }}% 
+          {{ kpi.change > 0 ? 'Increased' : 'Decreased' }}
+        </span>
       </div>
     </div>
   </div>
 
-  <div class="olap-dashboard">
-
-  <!-- KPIs -->
-  <div class="kpi-cards">
-    <!-- ... tus KPI cards ... -->
-  </div>
-
-  <!-- Fila 1: Ventas Mensuales (más ancho) + Canales de Venta (más estrecho) -->
-<div class="chart-row chart-row-top">
-  <div class="chart-card chart-card-ventas">
-    <h5>Ventas Mensuales</h5>
-    <canvas id="chartVentasMensuales"></canvas>
-  </div>
-  <div class="chart-card chart-card-canales">
-    <h5>Canales de Venta</h5>
-    <canvas id="chartCanales"></canvas>
-  </div>
-</div>
-
-
-  <!-- Fila 2: Clientes por Mes + Servicios Populares + Ventas por Servicio -->
-  <div class="chart-row chart-row-bottom">
-    <div class="chart-card">
-      <h5>Ventas por Servicio</h5>
-      <canvas id="chartServicios"></canvas>
+  <!-- 📊 Sección de gráficos -->
+  <div class="charts-grid">
+    <div class="chart-card large">
+      <div class="chart-header">
+        <h5>Tendencia de Ventas Mensuales</h5>
+        <div class="chart-tabs">
+          <button class="tab active">Último</button>
+          <button class="tab">Mes</button>
+          <button class="tab">Año</button>
+        </div>
+      </div>
+      <canvas id="chartVentasMensuales"></canvas>
     </div>
-    <div class="chart-card">
+
+    <div class="chart-card small">
+      <h5>Canales de Venta</h5>
+      <canvas id="chartCanales"></canvas>
+    </div>
+
+    <div class="chart-card medium">
       <h5>Servicios Populares</h5>
       <canvas id="chartPopulares"></canvas>
     </div>
-    <div class="chart-card">
+
+    <div class="chart-card medium">
       <h5>Métodos de Pago</h5>
       <canvas id="chartPagos"></canvas>
     </div>
-  </div>
 
-  <!-- Fila 3: Métodos de Pago -->
-  <div class="chart-row">
-    
-   
-     <div class="chart-card">
+    <div class="chart-card medium">
       <h5>Clientes por Mes</h5>
       <canvas id="chartClientes"></canvas>
     </div>
   </div>
+
 </div>

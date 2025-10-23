@@ -19,7 +19,7 @@ h3 {
 
 .table th {
   background-color: #f0ba55;
-  color: #fff;
+  color: #50280d;
   font-weight: 600;
 }
 
@@ -43,9 +43,9 @@ h3 {
 .acciones .btn {
   border: none;
   padding: 6px 10px;
-  margin: 0 3px;
+  margin: 0 2px;
   border-radius: 6px;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 .btn-edit {

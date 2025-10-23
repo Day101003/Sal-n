@@ -1,0 +1,51 @@
+<main class="servicios-page">
+  <!-- HERO -->
+  <section class="hero-servicios text-center">
+    <div class="overlay"></div>
+    <div class="hero-content">
+           <a href="/" class="btn-logo">
+      <img src="assets/img/img-unas/logo1.png" alt="Logo Nails Studio" class="logo-hero" />
+      <h2 class="hero-title">Nuestros Servicios</h2>
+      <p class="hero-subtitle">
+        Cuidá tu belleza con nuestros servicios profesionales y productos premium.
+      </p>
+      </a>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="servicios-section">
+    <div class="container">
+      <div class="servicios-grid">
+        <div class="servicio-card" *ngFor="let s of servicios">
+          <div class="slider-container"
+               (mousedown)="onDragStart($event, s)"
+               (mousemove)="onDragMove($event)"
+               (mouseup)="onDragEnd()"
+               (mouseleave)="onDragEnd()"
+               (touchstart)="onDragStart($event, s)"
+               (touchmove)="onDragMove($event)"
+               (touchend)="onDragEnd()">
+
+            <div class="slider" [style.transform]="'translateX(-' + s.activeIndex * 100 + '%)'">
+              <div class="slide" *ngFor="let img of s.imagenes">
+                <img [src]="img" alt="{{ s.nombre }}" class="servicio-img" />
+              </div>
+            </div>
+
+            <button class="btn-agendar-floating" (click)="agendar(s)">
+              <i class="bi bi-calendar-heart"></i>
+            </button>
+          </div>
+
+          <div class="servicio-info">
+            <h4>{{ s.nombre }}</h4>
+            <p>{{ s.descripcion }}</p>
+            <div class="precio">₡{{ s.precio | number }}</div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

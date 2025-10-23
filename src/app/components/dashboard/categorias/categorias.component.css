@@ -62,3 +62,40 @@ h3 {
   background-color: #f0ba55;
   color: #50280d;
 }
+
+.btn-activate {
+  background-color: #2e7d32;
+  color: #fff;
+}
+
+.btn-activate:hover {
+  background-color: #256628;
+}
+
+.btn-deactivate {
+  background-color: #b71c1c;
+  color: #fff;
+}
+
+.btn-deactivate:hover {
+  background-color: #7f1212;
+}
+
+.table th, .table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table th {
+  background-color: #f0ba55;
+  color: #50280d;
+  font-weight: 600;
+}
+
+
+.table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 260px;
+}

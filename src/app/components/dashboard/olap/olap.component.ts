@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import Chart from 'chart.js/auto';
 
@@ -9,22 +9,32 @@ import Chart from 'chart.js/auto';
   templateUrl: './olap.component.html',
   styleUrls: ['./olap.component.css']
 })
-
-
-export class OlapComponent implements AfterViewInit {
+export class OlapComponent implements AfterViewInit, OnDestroy {
+  charts: Chart[] = []; 
 
   ngAfterViewInit() {
     this.graficarVentasMensuales();
     this.graficarServicios();
     this.graficarPagos();
-   
-     this.graficarClientes(); 
-  this.graficarServiciosPopulares(); 
-   this.graficarCanales();
+    this.graficarClientes();
+    this.graficarServiciosPopulares();
+    this.graficarCanales();
+  }
+  kpis = [
+  { title: 'Ventas Totales', value: '₡1.44M', change: 10, color: '#448a5eff', icon: 'bi bi-cart-check' },
+  { title: 'Margen ₡', value: '₡155,800', change: 20, color: '#ddb918ff', icon: 'bi bi-wallet2' },
+  { title: 'Clientes Nuevos', value: '43', change: 30, color: '#3c91b8ff', icon: 'bi bi-people-fill' },
+  { title: 'Pedidos Recibidos', value: '15.5K', change: -10, color: '#be3232ff', icon: 'bi bi-bag-check' }
+];
+
+
+  ngOnDestroy() {
+    // 💣 Destruye todos los gráficos al salir del componente
+    this.charts.forEach(chart => chart.destroy());
   }
 
   graficarVentasMensuales() {
-    new Chart('chartVentasMensuales', {
+    const chart = new Chart('chartVentasMensuales', {
       type: 'bar',
       data: {
         labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago'],
@@ -35,16 +45,16 @@ export class OlapComponent implements AfterViewInit {
         }]
       },
       options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: { position: 'bottom' }}  
-    }
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom' } }
+      }
     });
+    this.charts.push(chart);
   }
 
   graficarServicios() {
-    new Chart('chartServicios', {
+    const chart = new Chart('chartServicios', {
       type: 'bar',
       data: {
         labels: ['Manicure', 'Pedicure', 'Soft Gel', 'Diseños'],
@@ -55,16 +65,16 @@ export class OlapComponent implements AfterViewInit {
         }]
       },
       options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: { position: 'bottom' }}  
-    }
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom' } }
+      }
     });
+    this.charts.push(chart);
   }
 
   graficarPagos() {
-    new Chart('chartPagos', {
+    const chart = new Chart('chartPagos', {
       type: 'doughnut',
       data: {
         labels: ['Efectivo', 'Tarjeta', 'SINPE', 'Transferencia'],
@@ -73,60 +83,60 @@ export class OlapComponent implements AfterViewInit {
           backgroundColor: ['#f0ba55', '#d28c65', '#50280d', '#c4775d']
         }]
       },
-       options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: { position: 'bottom' }}  
-    }
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom' } }
+      }
     });
+    this.charts.push(chart);
   }
 
-  
-
   graficarClientes() {
-  new Chart('chartClientes', {
-    type: 'line',
-    data: {
-      labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago'],
-      datasets: [{
-        label: 'Clientes Nuevos',
-        data: [20, 25, 30, 28, 35, 40, 38, 48],
-        borderColor: '#f0ba55',
-        backgroundColor: 'rgba(240, 186, 85, 0.2)',
-        fill: true,
-        tension: 0.4
-      }]
-    },
-    options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: { position: 'bottom' } }
-    }
-  });
-}
-graficarServiciosPopulares() {
-  new Chart('chartPopulares', {
-    type: 'bar',
-    data: {
-      labels: ['Soft Gel', 'Manicure', 'Pedicure', 'Acrílicas', 'Diseños'],
-      datasets: [{
-        label: 'Cantidad de Servicios',
-        data: [120, 95, 80, 60, 45],
-        backgroundColor: ['#f0ba55', '#d28c65', '#c4775d', '#ad5a4f', '#50280d']
-      }]
-    },
-    options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: { position: 'bottom' } }
-    }
-  });
-}
-graficarCanales() {
-    new Chart('chartCanales', {
+    const chart = new Chart('chartClientes', {
+      type: 'line',
+      data: {
+        labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago'],
+        datasets: [{
+          label: 'Clientes Nuevos',
+          data: [20, 25, 30, 28, 35, 40, 38, 48],
+          borderColor: '#f0ba55',
+          backgroundColor: 'rgba(240, 186, 85, 0.2)',
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+    this.charts.push(chart);
+  }
+
+  graficarServiciosPopulares() {
+    const chart = new Chart('chartPopulares', {
+      type: 'bar',
+      data: {
+        labels: ['Soft Gel', 'Manicure', 'Pedicure', 'Acrílicas', 'Diseños'],
+        datasets: [{
+          label: 'Cantidad de Servicios',
+          data: [120, 95, 80, 60, 45],
+          backgroundColor: ['#f0ba55', '#d28c65', '#c4775d', '#ad5a4f', '#50280d']
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+    this.charts.push(chart);
+  }
+
+  graficarCanales() {
+    const chart = new Chart('chartCanales', {
       type: 'pie',
       data: {
         labels: ['En el salón', 'Online'],
@@ -135,13 +145,12 @@ graficarCanales() {
           backgroundColor: ['#f0ba55', '#50280d']
         }]
       },
-       options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: { position: 'bottom' } }   
-    }
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom' } }
+      }
     });
+    this.charts.push(chart);
   }
-
 }

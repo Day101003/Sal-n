@@ -1,9 +1,15 @@
 <div class="module-card">
   <div class="header">
-    <h3> Inventario de Productos</h3>
-    <button class="btn btn-add" routerLink="/dashboard/inventario/nuevo">
-      <i class="bi bi-plus-circle"></i> Nuevo Producto
-    </button>
+    <h3>Inventario de Productos</h3>
+
+    <div>
+      <button class="btn btn-export me-2" (click)="exportarPDF()">
+        <i class="bi bi-file-earmark-pdf"></i> Exportar PDF
+      </button>
+      <button class="btn btn-add" routerLink="/dashboard/inventario/nuevo">
+        <i class="bi bi-plus-circle"></i> Nuevo Producto
+      </button>
+    </div>
   </div>
 
   <table class="table table-striped align-middle">
@@ -23,13 +29,14 @@
         <td>{{ p.costo | currency: 'CRC' }}</td>
         <td>{{ p.estado }}</td>
         <td class="text-center">
-          <button class="btn btn-sm btn-edit" [routerLink]="['/dashboard/inventario/editar', i]">
+          <button class="btn btn-sm btn-edit me-2" [routerLink]="['/dashboard/inventario/editar', i]">
             <i class="bi bi-pencil-square"></i>
           </button>
           <button class="btn btn-sm btn-delete" (click)="eliminarProducto(p)">
             <i class="bi bi-trash"></i>
           </button>
         </td>
+
       </tr>
     </tbody>
   </table>

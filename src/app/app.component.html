@@ -1,10 +1,14 @@
-
-<ng-container *ngIf="!esDashboard && !esAgendarCita && !esLogin && !esRegister">
+<ng-container *ngIf="!esDashboard && !esAgendarCita && !esLogin && !esRegister && !esServicios && !esResenas && !esContacto">
   <app-navbar></app-navbar>
 </ng-container>
 
-<router-outlet></router-outlet>
+<router-outlet (activate)="onActivate()"></router-outlet>
 
-<ng-container *ngIf="!esDashboard && !esAgendarCita && !esLogin && !esRegister">
+<ng-container *ngIf="!esDashboard && !esAgendarCita && !esLogin && !esRegister && !esServicios && !esResenas && !esContacto">
   <app-footer></app-footer>
 </ng-container>
+
+
+<div *ngIf="cargando" class="loading-overlay">
+  <div class="spinner"></div>
+</div>

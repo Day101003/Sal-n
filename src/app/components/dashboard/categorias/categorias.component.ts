@@ -11,17 +11,20 @@ import { RouterModule } from '@angular/router';
 })
 export class CategoriasComponent {
   categorias = [
-    { nombre: 'Uñas Acrílicas' },
-    { nombre: 'Manicure' },
-    { nombre: 'Pedicure' },
-    { nombre: 'Diseños Personalizados' }
+    { id_categoria: 1, nombre: 'Uñas Acrílicas', descripcion: 'Extensiones y refuerzo con acrílico', estado: 1 },
+    { id_categoria: 2, nombre: 'Manicure', descripcion: 'Cuidado básico y esmaltado de uñas', estado: 1 },
+    { id_categoria: 3, nombre: 'Pedicure', descripcion: 'Tratamiento y estética para pies', estado: 0 },
+    { id_categoria: 4, nombre: 'Diseños Personalizados', descripcion: 'Decoración artística exclusiva', estado: 1 }
   ];
 
   eliminarCategoria(categoria: any) {
-    const confirmar = confirm(`¿Deseás eliminar la categoría "${categoria.nombre}"?`);
-    if (confirmar) {
-      this.categorias = this.categorias.filter((item) => item !== categoria);
+    if (confirm(`¿Deseás eliminar la categoría "${categoria.nombre}"?`)) {
+      this.categorias = this.categorias.filter(item => item !== categoria);
       alert('✅ Categoría eliminada correctamente');
     }
+  }
+
+  cambiarEstado(categoria: any) {
+    categoria.estado = categoria.estado === 1 ? 0 : 1;
   }
 }

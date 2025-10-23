@@ -11,18 +11,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./crear-cita.component.css']
 })
 export class CrearCitaComponent {
+  // Datos simulados (luego se reemplazan con API)
+
+
+  empleados = [
+    { id: 10, nombre: 'Dayanna' },
+    { id: 11, nombre: 'Alejandra' },
+    { id: 12, nombre: 'Junior' }
+  ];
+
+  servicios = [
+    { id: 100, nombre: 'Manicure Gel' },
+    { id: 101, nombre: 'Pedicure Spa' },
+    { id: 102, nombre: 'Soft Gel' },
+    { id: 103, nombre: 'Diseño Personalizado' }
+  ];
+
   cita = {
-    cliente: '',
-    servicio: '',
-    fecha: '',
+    id_usuario_cliente: '',
+    id_usuario_empleado: '',
+    id_servicio: '',
+    fecha_cita: '',
     hora: '',
-    estado: 'Pendiente'
+    estado: 'Pendiente',
+    observacion: ''
   };
 
-  constructor(private router: Router) {}
+  constructor(private readonly router: Router) {}
 
   guardarCita() {
-    alert(`✅ Cita agendada para ${this.cita.cliente} el ${this.cita.fecha} a las ${this.cita.hora}`);
+    alert(`✅ Cita agendada correctamente para ${this.cita.fecha_cita} a las ${this.cita.hora}`);
     this.router.navigate(['/dashboard/citas']);
   }
 

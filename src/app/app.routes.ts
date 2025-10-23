@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-// Páginas principales
+
 import { HomeComponent } from './components/home/home.component';
 import { AgendarCitaComponent } from './components/agendar-cita/agendar-cita.component';
 
@@ -22,6 +22,11 @@ export const routes: Routes = [
     loadComponent: () => import('./components/home/contacto/contacto.component').then(m => m.ContactoComponent)
   },
 
+  {
+    path: 'resenas',
+    loadComponent: () =>
+      import('./components/reseñas/reseñas.component').then(m => m.ResenasComponent)
+  },
 
   {
     path: 'login',
@@ -33,6 +38,13 @@ export const routes: Routes = [
   },
 
   { path: 'agendar-cita', component: AgendarCitaComponent },
+
+  {
+    path: 'servicios-publico',
+    loadComponent: () =>
+      import('./components/serviciosPublicos/serviciosPublicos.component')
+        .then(m => m.ServiciosPublicosComponent)
+  },
 
   {
     path: 'dashboard',

@@ -17,7 +17,7 @@ usuarios = [
     telefono: '8888-1234',
     correo: 'Junior@salon.com',
     fecha_registro: new Date('2025-01-10'),
-    ruta_img: 'assets/img/img-unas/JUNIOR.jpg'
+    ruta_img: 'assets/img/img-unas/junior.jpg'
   },
   {
     nombre: 'Dayanna Solano',
@@ -29,7 +29,7 @@ usuarios = [
   {
     nombre: 'Ale Jiménez',
     telefono: '8888-9012',
-    correo: 'sofia@salon.com',
+    correo: 'ale@salon.com',
     fecha_registro: new Date('2025-05-15'),
     ruta_img: 'assets/img/img-unas/Ale.jpg'
   }
