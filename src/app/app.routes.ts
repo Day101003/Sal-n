@@ -13,6 +13,7 @@ import { CitasComponent } from './components/dashboard/citas/citas.component';
 import { UsuariosComponent } from './components/dashboard/usuarios/usuarios.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OlapComponent } from './components/dashboard/olap/olap.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
 
@@ -49,6 +50,7 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     loadComponent: () => import('./components/dashboard/dashboard.component').then(m => m.DashboardComponent),
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'perfil',
