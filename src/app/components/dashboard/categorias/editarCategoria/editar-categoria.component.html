@@ -1,10 +1,17 @@
 <div class="overlay">
   <div class="modal-card animate-fade">
     <h3 class="modal-title">
-      <i class="bi bi-folder-plus"></i> Editar Categoría
+      <i class="bi bi-pencil-square"></i> Editar Categoría
     </h3>
 
-    <form (ngSubmit)="guardarCategoria()" class="formulario">
+    <!-- Loading spinner -->
+    <div *ngIf="cargando" class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+    </div>
+
+    <form *ngIf="!cargando" (ngSubmit)="guardarCategoria()" class="formulario">
 
       <!-- NOMBRE -->
       <div class="mb-3">
@@ -53,7 +60,7 @@
           <i class="bi bi-x-circle"></i> Cancelar
         </button>
         <button type="submit" class="btn-guardar">
-          <i class="bi bi-save"></i> Guardar
+          <i class="bi bi-save"></i> Guardar Cambios
         </button>
       </div>
 

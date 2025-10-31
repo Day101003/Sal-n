@@ -17,7 +17,6 @@
         <li><a routerLink="/dashboard/categorias" routerLinkActive="active"><i class="bi bi-tags-fill"></i> Categorías</a></li>
         <li><a routerLink="/dashboard/citas" routerLinkActive="active"><i class="bi bi-calendar-check"></i> Citas</a></li>
         <li><a routerLink="/dashboard/usuarios" routerLinkActive="active"><i class="bi bi-people-fill"></i> Usuarios</a></li>
-       
       </ul>
     </nav>
   </aside>
@@ -38,17 +37,18 @@
 
   
   <div class="user-info">
-    <a class="username d-flex align-items-center gap-2 text-decoration-none"
-       routerLink="/dashboard/perfil"
-       routerLinkActive="active">
-      <img
-        src="assets/img/img-unas/admin-profile.jpg"
-        alt="Perfil"
-        class="user-avatar"
-      />
-      <span>Dayanna Solano</span>
-    </a>
-  </div>
+  <a class="username d-flex align-items-center gap-2 text-decoration-none"
+     routerLink="/dashboard/perfil"
+     routerLinkActive="active">
+    <img
+      [src]="usuario?.rutaImg ? 'http://localhost:5229' + usuario.rutaImg : 'assets/img/default-avatar.png'"
+      [alt]="usuario?.nombre || 'Perfil'"
+      (error)="$event.target.src='assets/img/default-avatar.png'"
+      class="user-avatar"
+    />
+    <span>{{ usuario?.nombre || 'Cargando...' }}</span>
+  </a>
+</div>
 </header>
 
 

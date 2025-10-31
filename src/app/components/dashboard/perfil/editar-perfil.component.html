@@ -1,23 +1,166 @@
-<div class="editar-container">
-  <div class="editar-card">
-    <h2>Editar Perfil</h2>
+<div class="container-fluid py-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h2 class="fw-bold">Editar Perfil</h2>
+      <p class="text-muted">Actualiza tu información personal</p>
+    </div>
+  </div>
 
-    <form (ngSubmit)="guardarCambios()" #form="ngForm">
-      <label>Nombre</label>
-      <input type="text" [(ngModel)]="usuario.nombre" name="nombre" required />
+  <!-- Loading spinner -->
+  <div *ngIf="cargando" class="text-center py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
 
-      <label>Correo</label>
-      <input type="email" [(ngModel)]="usuario.correo" name="correo" required />
+  <!-- Mensajes -->
+  <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+    <button type="button" class="btn-close" (click)="error = ''"></button>
+  </div>
 
-      <label>Teléfono</label>
-      <input type="text" [(ngModel)]="usuario.telefono" name="telefono" required />
+  <div *ngIf="mensaje" class="alert alert-success alert-dismissible fade show" role="alert">
+    <i class="bi bi-check-circle me-2"></i>{{ mensaje }}
+    <button type="button" class="btn-close" (click)="mensaje = ''"></button>
+  </div>
 
-      
+  <!-- Formulario -->
+  <div *ngIf="!cargando" class="row">
+    <div class="col-lg-4 mb-4">
+      <!-- Sección de imagen -->
+      <div class="card shadow-sm">
+        <div class="card-body text-center p-4">
+          <h5 class="card-title mb-3">Foto de Perfil</h5>
+          
+          <!-- Previsualización de imagen -->
+          <div class="mb-3">
+            <img 
+              [src]="previsualizacion || 'assets/img/default-avatar.png'" 
+              alt="Vista previa" 
+              class="rounded-circle mb-3"
+              style="width: 200px; height: 200px; object-fit: cover; border: 4px solid #f0ba55;">
+          </div>
 
-      <div class="botones">
-        <button type="submit" [disabled]="form.invalid" class="btn-guardar">Guardar</button>
-        <button type="button" (click)="cancelar()" class="btn-cancelar">Cancelar</button>
+          <!-- Input de archivo (oculto) -->
+          <input 
+            type="file" 
+            #fileInput 
+            accept="image/*" 
+            (change)="onImagenSeleccionada($event)"
+            style="display: none;">
+
+          <!-- Botones -->
+          <div class="d-grid gap-2">
+            <button 
+              type="button" 
+              class="btn btn-primary"
+              (click)="fileInput.click()">
+              <i class="bi bi-upload me-2"></i>Seleccionar Imagen
+            </button>
+            
+            <button 
+              type="button" 
+              class="btn btn-outline-danger"
+              *ngIf="previsualizacion"
+              (click)="eliminarImagen()">
+              <i class="bi bi-trash me-2"></i>Eliminar Imagen
+            </button>
+          </div>
+
+          <small class="text-muted d-block mt-3">
+            Formatos: JPG, PNG, GIF<br>
+            Tamaño máximo: 5MB
+          </small>
+        </div>
       </div>
-    </form>
+    </div>
+
+    <div class="col-lg-8">
+      <!-- Sección de datos -->
+      <div class="card shadow-sm">
+        <div class="card-header bg-white">
+          <h5 class="mb-0 fw-bold">
+            <i class="bi bi-person-badge me-2"></i>Información Personal
+          </h5>
+        </div>
+        <div class="card-body p-4">
+          <form (ngSubmit)="guardarCambios()">
+            <!-- Nombre -->
+            <div class="mb-3">
+              <label for="nombre" class="form-label fw-semibold">
+                <i class="bi bi-person me-2"></i>Nombre Completo
+              </label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="nombre"
+                [(ngModel)]="usuario.nombre"
+                name="nombre"
+                required
+                placeholder="Ingresa tu nombre completo">
+            </div>
+
+            <!-- Correo -->
+            <div class="mb-3">
+              <label for="correo" class="form-label fw-semibold">
+                <i class="bi bi-envelope me-2"></i>Correo Electrónico
+              </label>
+              <input 
+                type="email" 
+                class="form-control" 
+                id="correo"
+                [(ngModel)]="usuario.correo"
+                name="correo"
+                required
+                placeholder="correo@example.com">
+            </div>
+
+            <!-- Teléfono -->
+            <div class="mb-3">
+              <label for="telefono" class="form-label fw-semibold">
+                <i class="bi bi-telephone me-2"></i>Teléfono
+              </label>
+              <input 
+                type="tel" 
+                class="form-control" 
+                id="telefono"
+                [(ngModel)]="usuario.telefono"
+                name="telefono"
+                placeholder="+506 8888-9999">
+            </div>
+
+            <!-- Preferencias -->
+            <div class="mb-4">
+              <label for="preferencias" class="form-label fw-semibold">
+                <i class="bi bi-star me-2"></i>Preferencias
+              </label>
+              <textarea 
+                class="form-control" 
+                id="preferencias"
+                [(ngModel)]="usuario.preferencias"
+                name="preferencias"
+                rows="3"
+                placeholder="Describe tus preferencias o servicios favoritos..."></textarea>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="d-flex gap-2 justify-content-end">
+              <button 
+                type="button" 
+                class="btn btn-outline-secondary"
+                (click)="cancelar()">
+                <i class="bi bi-x-circle me-2"></i>Cancelar
+              </button>
+              <button 
+                type="submit" 
+                class="btn btn-success"
+                [disabled]="cargando">
+                <i class="bi bi-check-circle me-2"></i>Guardar Cambios
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

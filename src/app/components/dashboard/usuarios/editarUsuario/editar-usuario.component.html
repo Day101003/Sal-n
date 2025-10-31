@@ -1,7 +1,14 @@
 <div class="module-card fade-in">
   <h3>Editar Usuario</h3>
 
-  <form (ngSubmit)="guardarUsuario()" class="mt-4">
+  <!-- Loading spinner -->
+  <div *ngIf="cargando" class="text-center py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
+    </div>
+  </div>
+
+  <form *ngIf="!cargando" (ngSubmit)="guardarUsuario()" class="mt-4">
     <div class="row gy-3">
       <div class="col-md-6">
         <label for="nombre" class="form-label fw-bold">Nombre Completo</label>
@@ -12,7 +19,7 @@
       <div class="col-md-6">
         <label for="telefono" class="form-label fw-bold">Teléfono</label>
         <input type="text" id="telefono" [(ngModel)]="usuario.telefono" name="telefono" class="form-control"
-          placeholder="Ejemplo: 8888-1234" required />
+          placeholder="Ejemplo: 8888-1234" />
       </div>
 
       <div class="col-md-6">
@@ -24,28 +31,18 @@
       <div class="col-md-6">
         <label for="fecha_registro" class="form-label fw-bold">Fecha de Registro</label>
         <input type="date" id="fecha_registro" [(ngModel)]="usuario.fecha_registro" name="fecha_registro"
-          class="form-control" required />
-      </div>
-
-
-
-      <div class="col-md-6">
-        <label for="contraseña" class="form-label fw-bold">Contraseña</label>
-        <input type="password" id="contraseña" [(ngModel)]="usuario.clave" name="contraseña" class="form-control"
-          placeholder="Mínimo 6 caracteres" required />
+          class="form-control" disabled />
       </div>
 
       <div class="col-md-6">
         <label for="ruta_img" class="form-label fw-bold">Imagen de Perfil</label>
         <input type="file" id="ruta_img" (change)="cargarImagen($event)" accept="image/*" class="form-control" />
       </div>
+      
       <div class="mt-2 vista-img-derecha" *ngIf="usuario.ruta_img">
-  <img [src]="usuario.ruta_img" alt="Vista previa" />
-</div>
-
-
-
-
+        <img [src]="usuario.ruta_img" alt="Vista previa" 
+             (error)="$event.target.src='assets/img/default-avatar.png'" />
+      </div>
 
       <div class="col-12">
         <label for="preferencias" class="form-label fw-bold">Preferencias</label>
@@ -55,8 +52,8 @@
     </div>
 
     <div class="text-end mt-4">
-      <button type="submit" class="btn btn-save me-2">
-        <i class="bi bi-check-circle"></i> Guardar
+      <button type="submit" class="btn btn-save me-2" [disabled]="cargando">
+        <i class="bi bi-check-circle"></i> Guardar Cambios
       </button>
       <button type="button" class="btn btn-secondary" (click)="cancelar()">
         <i class="bi bi-x-circle"></i> Cancelar

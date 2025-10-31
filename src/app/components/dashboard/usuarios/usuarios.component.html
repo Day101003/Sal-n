@@ -4,32 +4,31 @@
     <button class="btn btn-add" (click)="nuevoUsuario()">
       <i class="bi bi-plus-circle"></i> Nuevo Usuario
     </button>
+  </div>
 
-<div class="usuarios-grid">
-  <div class="usuario-card" *ngFor="let u of usuarios; let i = index">
-    
-   
-    <button class="btn btn-sm btn-delete btn-x" (click)="eliminarUsuario(u)">
-      <i class="bi bi-x-lg"></i>
-    </button>
+  <div class="usuarios-grid">
+    <div class="usuario-card" *ngFor="let u of usuarios">
+      
+      <button class="btn btn-sm btn-delete btn-x" (click)="eliminarUsuario(u)">
+        <i class="bi bi-x-lg"></i>
+      </button>
 
-    <div class="usuario-img">
-  <img [src]="u.ruta_img" alt="Foto de {{ u.nombre }}" />
-  <button class="btn btn-sm btn-edit btn-edit-overlay" (click)="editarUsuario(i)">
-    <i class="bi bi-pencil-square"></i>
-  </button>
-</div>
+      <div class="usuario-img">
+        <img 
+          [src]="u.rutaImg ? 'http://localhost:5229' + u.rutaImg : 'assets/img/default-avatar.png'" 
+          [alt]="'Foto de ' + u.nombre"
+          (error)="$event.target.src='assets/img/default-avatar.png'" />
+        <button class="btn btn-sm btn-edit btn-edit-overlay" (click)="editarUsuario(u)">
+          <i class="bi bi-pencil-square"></i>
+        </button>
+      </div>
 
-
-    <div class="usuario-info">
-      <h4>{{ u.nombre }}</h4>
-      <p><i class="bi bi-envelope"></i> {{ u.correo }}</p>
-      <p><i class="bi bi-telephone"></i> {{ u.telefono }}</p>
-      <p><i class="bi bi-calendar"></i> {{ u.fecha_registro | date: 'dd/MM/yyyy' }}</p>
+      <div class="usuario-info">
+        <h4>{{ u.nombre }}</h4>
+        <p><i class="bi bi-envelope"></i> {{ u.correo }}</p>
+        <p><i class="bi bi-telephone"></i> {{ u.telefono || 'No especificado' }}</p>
+        <p><i class="bi bi-calendar"></i> {{ u.fechaRegistro | date: 'dd/MM/yyyy' }}</p>
+      </div>
     </div>
   </div>
-</div>
-
-
-
 </div>

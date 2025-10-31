@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-nuevo-producto',
@@ -13,22 +14,46 @@ import { Router } from '@angular/router';
 export class NuevoProductoComponent {
   producto = {
     nombre: '',
-    unidad: '',
-    stock: 0,
-    minimo: 0,
+    cantidad: 0,
     costo: 0,
-    estado: 'Activo',
-    categoria: 'Manicure'
+    estado: 1
   };
 
-  constructor(private router: Router) {}
+  private apiUrl = 'http://localhost:5229/api/products';
 
-  guardarProducto() {
-    console.log('🟢 Producto guardado:', this.producto);
-    alert(`Producto "${this.producto.nombre}" guardado correctamente ✅`);
-    this.router.navigate(['/dashboard/inventario']);
+  constructor(private router: Router, private http: HttpClient) {}
+
+  guardarProducto(): void {
+    if (!this.producto.nombre.trim()) {
+      alert('Por favor ingresa un nombre para el producto.');
+      return;
+    }
+
+    if (this.producto.cantidad < 0) {
+      alert('La cantidad no puede ser negativa.');
+      return;
+    }
+
+    const nuevoProducto = {
+      Nombre: this.producto.nombre,
+      Cantidad: this.producto.cantidad,
+      Costo: this.producto.costo,
+      Estado: this.producto.estado
+    };
+
+    this.http.post(this.apiUrl, nuevoProducto).subscribe({
+      next: () => {
+        alert('✅ Producto agregado exitosamente');
+        this.router.navigate(['/dashboard/inventario']);
+      },
+      error: (err) => {
+        console.error('Error al crear producto:', err);
+        alert('Error al crear producto.');
+      }
+    });
   }
-  cancelar() {
+
+  cancelar(): void {
     this.router.navigate(['/dashboard/inventario']);
   }
 }

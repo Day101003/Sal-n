@@ -1,46 +1,88 @@
-<div class="module-card">
-  <h3> Editar Producto</h3>
+<div class="overlay">
+  <div class="modal-card animate-fade">
+    <h3 class="modal-title">
+      <i class="bi bi-pencil-square"></i> Editar Producto
+    </h3>
 
-  <form (ngSubmit)="actualizarProducto()" #form="ngForm">
-    <div class="row gy-3">
+    <!-- Loading spinner -->
+    <div *ngIf="cargando" class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+    </div>
 
-      <div class="col-md-6">
-        <label class="form-label">Nombre del Producto</label>
-        <input type="text" class="form-control" [(ngModel)]="producto.nombre" name="nombre" required />
+    <form *ngIf="!cargando" (ngSubmit)="guardarProducto()" class="formulario">
+
+      <!-- NOMBRE -->
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre del producto</label>
+        <input
+          type="text"
+          id="nombre"
+          [(ngModel)]="producto.nombre"
+          name="nombre"
+          class="form-control"
+          placeholder="Ejemplo: Esmalte OPI Rojo"
+          required
+        />
       </div>
 
-     
-      <div class="col-md-4">
-        <label class="form-label">Stock Actual</label>
-        <input type="number" class="form-control" [(ngModel)]="producto.stock" name="stock" min="0" required />
+      <!-- CANTIDAD/STOCK -->
+      <div class="mb-3">
+        <label for="cantidad" class="form-label">Cantidad en stock</label>
+        <input
+          type="number"
+          id="cantidad"
+          [(ngModel)]="producto.cantidad"
+          name="cantidad"
+          class="form-control"
+          placeholder="0"
+          min="0"
+          step="1"
+          required
+        />
       </div>
 
-      
-
-      <div class="col-md-4">
-        <label class="form-label">Costo (₡)</label>
-        <input type="number" class="form-control" [(ngModel)]="producto.costo" name="costo" min="0" required />
+      <!-- COSTO -->
+      <div class="mb-3">
+        <label for="costo" class="form-label">Costo por unidad (₡)</label>
+        <input
+          type="number"
+          id="costo"
+          [(ngModel)]="producto.costo"
+          name="costo"
+          class="form-control"
+          placeholder="5000"
+          min="0"
+          step="100"
+          required
+        />
       </div>
 
-      <div class="col-md-6">
-        <label class="form-label">Estado</label>
-        <select class="form-select" [(ngModel)]="producto.estado" name="estado">
-          <option value="Activo">Activo</option>
-          <option value="Inactivo">Inactivo</option>
+      <!-- ESTADO -->
+      <div class="mb-3 d-flex align-items-center justify-content-between">
+        <label for="estado" class="form-label m-0">Estado</label>
+        <select
+          id="estado"
+          [(ngModel)]="producto.estado"
+          name="estado"
+          class="form-select estado-select"
+        >
+          <option [value]="1">Disponible</option>
+          <option [value]="0">Agotado</option>
         </select>
       </div>
 
-      
+      <!-- BOTONES -->
+      <div class="acciones">
+        <button type="button" class="btn-cancelar" (click)="cancelar()">
+          <i class="bi bi-x-circle"></i> Cancelar
+        </button>
+        <button type="submit" class="btn-guardar">
+          <i class="bi bi-save"></i> Guardar Cambios
+        </button>
+      </div>
 
-    </div>
-
-    <div class="text-end mt-4">
-      <button type="button" class="btn btn-secondary me-2"  (click)="cancelar()">
-        <i class="bi bi-x-circle"></i> Cancelar
-      </button>
-      <button type="submit" class="btn btn-save">
-        <i class="bi bi-save"></i> Actualizar Producto
-      </button>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>

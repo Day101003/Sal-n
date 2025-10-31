@@ -74,3 +74,115 @@
 .text-end {
   text-align: right;
 }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 550px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.animate-fade {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-title {
+  color: #f0ba55;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.formulario .form-label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.formulario .form-control,
+.formulario .form-select {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.6rem;
+  transition: all 0.3s;
+}
+
+.formulario .form-control:focus,
+.formulario .form-select:focus {
+  border-color: #f0ba55;
+  box-shadow: 0 0 0 0.2rem rgba(240, 186, 85, 0.25);
+  outline: none;
+}
+
+.estado-select {
+  max-width: 150px;
+}
+
+.acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn-cancelar,
+.btn-guardar {
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-cancelar {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-cancelar:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-guardar {
+  background: #f0ba55;
+  color: #333;
+}
+
+.btn-guardar:hover {
+  background: #e0aa45;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(240, 186, 85, 0.4);
+}

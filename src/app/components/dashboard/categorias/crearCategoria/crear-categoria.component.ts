@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-crear-categoria',
@@ -17,18 +18,35 @@ export class CrearCategoriaComponent {
     estado: 1
   };
 
-  constructor(private router: Router) {}
+  private apiUrl = 'http://localhost:5229/api/categories';
 
-  guardarCategoria() {
-    if (this.categoria.nombre.trim()) {
-      alert(`✅ Categoría "${this.categoria.nombre}" creada correctamente`);
-      this.router.navigate(['/dashboard/categorias']);
-    } else {
-      alert('⚠️ El nombre de la categoría es obligatorio');
+  constructor(private router: Router, private http: HttpClient) {}
+
+  guardarCategoria(): void {
+    if (!this.categoria.nombre.trim()) {
+      alert('Por favor ingresa un nombre para la categoría.');
+      return;
     }
+
+    const nuevaCategoria = {
+      Nombre: this.categoria.nombre,
+      Descripcion: this.categoria.descripcion,
+      Estado: this.categoria.estado
+    };
+
+    this.http.post(this.apiUrl, nuevaCategoria).subscribe({
+      next: () => {
+        alert('✅ Categoría creada exitosamente');
+        this.router.navigate(['/dashboard/categorias']);
+      },
+      error: (err) => {
+        console.error('Error al crear categoría:', err);
+        alert('Error al crear categoría.');
+      }
+    });
   }
 
-  cancelar() {
+  cancelar(): void {
     this.router.navigate(['/dashboard/categorias']);
   }
 }

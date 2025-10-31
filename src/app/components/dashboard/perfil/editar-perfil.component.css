@@ -73,3 +73,32 @@ form select {
 .btn-cancelar:hover {
   background-color: #3d1e08;
 }
+
+.card {
+  border-radius: 10px;
+  border: none;
+}
+
+.card-header {
+  border-bottom: 2px solid #f0ba55;
+  border-radius: 10px 10px 0 0 !important;
+}
+
+.form-control:focus {
+  border-color: #f0ba55;
+  box-shadow: 0 0 0 0.2rem rgba(240, 186, 85, 0.25);
+}
+
+.btn-primary {
+  background-color: #f0ba55;
+  border-color: #f0ba55;
+}
+
+.btn-primary:hover {
+  background-color: #d9a649;
+  border-color: #d9a649;
+}
+
+.alert {
+  border-radius: 10px;
+}

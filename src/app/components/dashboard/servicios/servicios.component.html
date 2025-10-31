@@ -9,24 +9,39 @@
   <table class="table">
     <thead>
       <tr>
+        <th>ID</th>
         <th>Nombre</th>
         <th>Categoría</th>
         <th>Precio</th>
+        <th>Duración</th>
+        <th>Estado</th>
         <th class="text-center">Acciones</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let s of servicios; let i = index">
+      <tr *ngFor="let s of servicios">
+        <td>{{ s.idServicio }}</td>
         <td>{{ s.nombre }}</td>
-        <td>{{ s.categoria }}</td>
-        <td>{{ s.precio | currency: 'CRC' }}</td>
+        <td>{{ obtenerNombreCategoria(s.idCategoria) }}</td>
+        <td>{{ s.costo | currency: 'CRC' }}</td>
+        <td>{{ s.duracionEstimada }}</td>
         <td class="text-center">
-          <button
-  class="btn btn-sm btn-edit me-2"
-  [routerLink]="['/dashboard/servicios/editar', i]"
->
-  <i class="bi bi-pencil-square"></i>
-</button>
+          <span [class.estado-activo]="s.estado === 1"
+                [class.estado-inactivo]="s.estado === 0">
+            {{ s.estado === 1 ? 'Activo' : 'Inactivo' }}
+          </span>
+        </td>
+        <td class="text-center">
+          <button class="btn btn-sm" 
+                  [ngClass]="s.estado === 1 ? 'btn-deactivate' : 'btn-activate'"
+                  (click)="cambiarEstado(s)">
+            <i [class]="s.estado === 1 ? 'bi bi-toggle-on' : 'bi bi-toggle-off'"></i>
+          </button>
+
+          <button class="btn btn-sm btn-edit me-2"
+                  [routerLink]="['/dashboard/servicios/editar', s.idServicio]">
+            <i class="bi bi-pencil-square"></i>
+          </button>
 
           <button class="btn btn-sm btn-delete" (click)="eliminarServicio(s)">
             <i class="bi bi-trash"></i>

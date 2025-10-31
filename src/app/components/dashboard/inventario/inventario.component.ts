@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-inventario',
@@ -11,67 +10,50 @@ import autoTable from 'jspdf-autotable';
   templateUrl: './inventario.component.html',
   styleUrls: ['./inventario.component.css']
 })
-export class InventarioComponent {
-  productos = [
-    { nombre: 'Removedor de esmalte', unidad: 'ml', stock: 25, minimo: 5, costo: 1200, estado: 'Activo' },
-    { nombre: 'Lima profesional', unidad: 'unid', stock: 10, minimo: 3, costo: 900, estado: 'Activo' },
-    { nombre: 'Esmalte rosado', unidad: 'ml', stock: 2, minimo: 4, costo: 1500, estado: 'Bajo stock' }
-  ];
+export class InventarioComponent implements OnInit {
+  productos: any[] = [];
+  private apiUrl = 'http://localhost:5229/api/products';
 
-  eliminarProducto(p: any) {
-    const confirmar = confirm(`¿Deseás eliminar el producto "${p.nombre}"?`);
-    if (confirmar) {
-      this.productos = this.productos.filter(item => item !== p);
-      alert('Producto eliminado correctamente ✅');
+  constructor(private http: HttpClient) {}
+
+  ngOnInit(): void {
+    this.cargarProductos();
+  }
+
+  cargarProductos(): void {
+    this.http.get<any[]>(this.apiUrl).subscribe({
+      next: (data) => {
+        this.productos = data.map(p => ({
+          ...p,
+          stock: p.cantidad, // mapear Cantidad a stock para el HTML
+          minimo: 10 // puedes ajustar esto según necesites
+        }));
+        console.log('Productos cargados:', this.productos);
+      },
+      error: (err) => {
+        console.error('Error al cargar productos:', err);
+        alert('Error al cargar productos.');
+      }
+    });
+  }
+
+  eliminarProducto(producto: any): void {
+    if (confirm(`¿Desea eliminar el producto "${producto.nombre}"?`)) {
+      this.http.delete(`${this.apiUrl}/${producto.idProducto}`).subscribe({
+        next: () => {
+          alert('✅ Producto eliminado correctamente');
+          this.cargarProductos(); // recargar lista
+        },
+        error: (err) => {
+          console.error('Error al eliminar:', err);
+          alert('Error al eliminar producto.');
+        }
+      });
     }
   }
 
-  exportarPDF() {
-    const doc = new jsPDF();
-
-    // Título del PDF
-    doc.setFontSize(16);
-    doc.text('Inventario de Productos', 14, 18);
-    doc.setFontSize(11);
-    doc.setTextColor(100);
-
-    // Encabezados de la tabla
-    const head = [['Nombre', 'Stock', 'Costo (₡)', 'Estado']];
-
-    // Filas de la tabla
-    const data = this.productos.map(p => [
-      p.nombre,
-      p.stock.toString(),
-      p.costo.toLocaleString('es-CR'),
-      p.estado
-    ]);
-
-    // Generar tabla con formato
-    autoTable(doc, {
-      head,
-      body: data,
-      startY: 25,
-      theme: 'grid',
-      headStyles: {
-        fillColor: [240, 186, 85], // color dorado del tema
-        textColor: [80, 40, 13],
-        fontStyle: 'bold'
-      },
-      styles: {
-        cellPadding: 4,
-        fontSize: 10,
-        halign: 'center'
-      },
-      alternateRowStyles: {
-        fillColor: [255, 250, 240]
-      }
-    });
-
-    // Pie de página
-    const fecha = new Date().toLocaleDateString('es-CR');
-    doc.text(`Generado el ${fecha}`, 14, doc.internal.pageSize.height - 10);
-
-    // Descargar PDF
-    doc.save(`Inventario_${fecha}.pdf`);
+  exportarPDF(): void {
+    alert('Función de exportar PDF - Por implementar');
+    // Aquí puedes integrar jsPDF o similar
   }
 }

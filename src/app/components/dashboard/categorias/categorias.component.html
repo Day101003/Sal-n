@@ -17,8 +17,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let c of categorias; let i = index">
-        <td class="text-center">{{ c.id_categoria }}</td>
+      <tr *ngFor="let c of categorias">
+        <td class="text-center">{{ c.idCategoria }}</td>
         <td>{{ c.nombre }}</td>
         <td>{{ c.descripcion }}</td>
         <td class="text-center">
@@ -28,16 +28,14 @@
           </span>
         </td>
         <td class="text-center acciones">
-        
           <button class="btn btn-sm" 
                   [ngClass]="c.estado === 1 ? 'btn-deactivate' : 'btn-activate'"
                   (click)="cambiarEstado(c)">
             <i [class]="c.estado === 1 ? 'bi bi-person-x' : 'bi bi-person-check'"></i>
           </button>
 
-        
           <button class="btn btn-sm btn-edit" 
-                  [routerLink]="['/dashboard/categorias/editar', i]">
+                  [routerLink]="['/dashboard/categorias/editar', c.idCategoria]">
             <i class="bi bi-pencil-square"></i>
           </button>
 

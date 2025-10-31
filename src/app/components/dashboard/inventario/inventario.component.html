@@ -15,6 +15,7 @@
   <table class="table table-striped align-middle">
     <thead>
       <tr>
+        <th>ID</th>
         <th>Nombre</th>
         <th>Stock</th>
         <th>Costo (₡)</th>
@@ -23,20 +24,26 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let p of productos; let i = index">
+      <tr *ngFor="let p of productos">
+        <td>{{ p.idProducto }}</td>
         <td>{{ p.nombre }}</td>
         <td [class.bajo-stock]="p.stock <= p.minimo">{{ p.stock }}</td>
         <td>{{ p.costo | currency: 'CRC' }}</td>
-        <td>{{ p.estado }}</td>
+        <td>
+          <span [class.estado-activo]="p.estado === 1"
+                [class.estado-inactivo]="p.estado === 0">
+            {{ p.estado === 1 ? 'Disponible' : 'Agotado' }}
+          </span>
+        </td>
         <td class="text-center">
-          <button class="btn btn-sm btn-edit me-2" [routerLink]="['/dashboard/inventario/editar', i]">
+          <button class="btn btn-sm btn-edit me-2" 
+                  [routerLink]="['/dashboard/inventario/editar', p.idProducto]">
             <i class="bi bi-pencil-square"></i>
           </button>
           <button class="btn btn-sm btn-delete" (click)="eliminarProducto(p)">
             <i class="bi bi-trash"></i>
           </button>
         </td>
-
       </tr>
     </tbody>
   </table>

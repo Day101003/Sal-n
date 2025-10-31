@@ -28,10 +28,15 @@ export class LoginComponent {
           this.authService.saveToken(token);
           console.log('Login exitoso — token:', token.slice(0,8) + '…(masked)');
           
-          // redirigir según tipo de usuario
+          const tipoUsuario = this.authService.getUserType();
+          console.log('Tipo de usuario:', tipoUsuario);
+          console.log('Es admin?:', this.authService.isAdmin());
+          
           if (this.authService.isAdmin()) {
+            console.log('Redirigiendo a dashboard...');
             this.router.navigate(['/dashboard']);
           } else {
+            console.log('Redirigiendo a home...');
             this.router.navigate(['/home']);
           }
         } else {
@@ -39,8 +44,16 @@ export class LoginComponent {
         }
       },
       error: (err) => {
-        console.error('Login error', { status: err.status, statusText: err.statusText, body: err.error });
-        this.errorMessage = err.status === 401 ? 'Usuario o contraseña incorrectos.' : 'Error del servidor.';
+        console.error('Login error completo:', err);
+        console.error('Status:', err.status);
+        console.error('Error body completo:', err.error);
+        
+        // Verificar si es problema de credenciales o de tipo de usuario
+        if (err.status === 401) {
+          this.errorMessage = 'Usuario o contraseña incorrectos.';
+        } else {
+          this.errorMessage = 'Error de conexión.';
+        }
       }
     });
   }
