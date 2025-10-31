@@ -25,15 +25,20 @@ export class LoginComponent {
       next: (body) => {
         const token = body?.token || body?.access_token || body?.jwt;
         if (token) {
-          console.log('Login exitoso — token:', token.slice(0, 8) + '…(masked)');
           this.authService.saveToken(token);
-          this.router.navigate(['/dashboard']);
+          console.log('Login exitoso — token:', token.slice(0,8) + '…(masked)');
+          
+          // redirigir según tipo de usuario
+          if (this.authService.isAdmin()) {
+            this.router.navigate(['/dashboard']);
+          } else {
+            this.router.navigate(['/home']);
+          }
         } else {
           this.errorMessage = 'No se recibió token del servidor.';
         }
       },
       error: (err) => {
-        // mostrar info útil para depuración
         console.error('Login error', { status: err.status, statusText: err.statusText, body: err.error });
         this.errorMessage = err.status === 401 ? 'Usuario o contraseña incorrectos.' : 'Error del servidor.';
       }

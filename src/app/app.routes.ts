@@ -16,8 +16,9 @@ import { OlapComponent } from './components/dashboard/olap/olap.component';
 import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
+  // cargar Home como lazy en /home
+{ path: 'home', loadComponent: () => import('./components/home/home.component').then(m => m.HomeComponent) },
 
-  { path: '', component: HomeComponent },
   {
     path: 'contacto',
     loadComponent: () => import('./components/home/contacto/contacto.component').then(m => m.ContactoComponent)
@@ -33,10 +34,7 @@ export const routes: Routes = [
     path: 'login',
     loadComponent: () => import('./components/login/login.component').then(m => m.LoginComponent)
   },
-  {
-    path: 'register',
-    loadComponent: () => import('./components/register/register.component').then(m => m.RegisterComponent)
-  },
+  
 
   { path: 'agendar-cita', component: AgendarCitaComponent },
 
@@ -139,6 +137,9 @@ export const routes: Routes = [
     ]
   },
 
+  { path: 'register', loadComponent: () => import('./components/register/register.component').then(m => m.RegisterComponent) },
 
-  { path: '**', redirectTo: '', pathMatch: 'full' }
+  // ruta por defecto -> home (público)
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];

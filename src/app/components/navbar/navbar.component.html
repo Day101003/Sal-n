@@ -11,10 +11,38 @@
           <span>Lunes - Sábado: 9:00 AM - 7:00 PM</span>
         </i>
       </div>
-       <div class="auth-buttons d-flex align-items-center">
-      <a href="/dashboard" class="cta-btn me-2">Administrador</a>
-      <a href="/login" class="cta-btn">Login</a>
-    </div>
+      
+      <!-- Botones de autenticación: mostrar solo si NO está logueado -->
+      <div class="auth-buttons d-flex align-items-center" *ngIf="!isLoggedIn">
+        <a routerLink="/dashboard" class="cta-btn me-2" *ngIf="false">Administrador</a>
+        <a routerLink="/login" class="cta-btn">Login</a>
+      </div>
+
+      <!-- Perfil del usuario: mostrar solo si está logueado -->
+      <div class="user-profile d-flex align-items-center" *ngIf="isLoggedIn">
+        <!-- Mostrar link a dashboard solo si es admin -->
+        <a routerLink="/dashboard" class="cta-btn me-2" *ngIf="isAdmin">
+          <i class="bi bi-speedometer2 me-1"></i>Dashboard
+        </a>
+        
+        <!-- Dropdown de perfil -->
+        <div class="dropdown">
+          <button class="btn btn-link dropdown-toggle text-white text-decoration-none d-flex align-items-center" 
+                  type="button" 
+                  id="userDropdown" 
+                  data-bs-toggle="dropdown" 
+                  aria-expanded="false">
+            <i class="bi bi-person-circle me-2 fs-5"></i>
+            <span>{{ userName || 'Usuario' }}</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" routerLink="/perfil"><i class="bi bi-person me-2"></i>Mi Perfil</a></li>
+            <li><a class="dropdown-item" routerLink="/agendar-cita"><i class="bi bi-calendar-check me-2"></i>Mis Citas</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" (click)="logout()" style="cursor: pointer;"><i class="bi bi-box-arrow-right me-2"></i>Cerrar Sesión</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
   <!-- /Top Bar -->
@@ -23,18 +51,17 @@
   <div class="branding d-flex align-items-center">
     <div class="container position-relative d-flex align-items-center justify-content-between">
       <a href="#" class="logo d-flex align-items-center">
-       <img src="assets/img/img-unas/logo1.png" alt="Logo" class="img-fluid"  >
-
+       <img src="assets/img/img-unas/logo1.png" alt="Logo" class="img-fluid">
       </a>
 
       <!-- Navigation Menu -->
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero" class="active">Inicio</a></li>
-          <li><a href="#about">Nosotros</a></li>
-          <li><a href="#works">Trabajos</a></li>
-          <li><a href="/contacto">Contacto</a></li>
-           <li><a href="/resenas">Reseñas</a></li>
+          <li><a routerLink="/home" class="active">Inicio</a></li>
+          <li><a routerLink="/nosotros">Nosotros</a></li>
+          <li><a routerLink="/servicios-publico">Servicios</a></li>
+          <li><a routerLink="/contacto">Contacto</a></li>
+          <li><a routerLink="/resenas">Reseñas</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>

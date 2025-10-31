@@ -1,36 +1,105 @@
-<div class="perfil-container">
-    <div class="perfil-card shadow-lg">
-       <div class="perfil-header">
-  <div class="foto-wrapper">
-    <img src="assets/img/img-unas/dAY.png" alt="Foto de perfil" class="perfil-foto" />
-    <a class="btn-edit-hover" [routerLink]="['/dashboard/perfil/editar']">
-      <i class="bi bi-pencil-square"></i>
-    </a>
-  </div>
-  <h2>{{ usuario?.nombre }}</h2>
-  <p class="rol">{{ usuario?.rol }}</p>
-</div>
-
-
-        <div class="perfil-info">
-            <div class="info-item">
-                <i class="bi bi-envelope"></i>
-                <span>{{ usuario?.correo }}</span>
-            </div>
-            <div class="info-item">
-                <i class="bi bi-telephone"></i>
-                <span>{{ usuario?.telefono }}</span>
-            </div>
-            <div class="info-item">
-                <i class="bi bi-calendar-check"></i>
-                <span>Miembro desde {{ usuario?.fechaRegistro | date:'dd/MM/yyyy' }}</span>
-            </div>
-        </div>
-
-        <div class="perfil-actions">
-            <button class="btn-logout">
-                <i class="bi bi-box-arrow-right"></i> Cerrar sesión
-            </button>
-        </div>
+<div class="container-fluid py-4">
+  <!-- Loading spinner -->
+  <div *ngIf="cargando" class="text-center py-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Cargando...</span>
     </div>
+  </div>
+
+  <!-- Error message -->
+  <div *ngIf="error && !cargando" class="alert alert-danger">
+    <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+  </div>
+
+  <!-- Perfil del usuario -->
+  <div *ngIf="usuario && !cargando">
+    <div class="row mb-4">
+      <div class="col-12">
+        <h2 class="fw-bold">Mi Perfil</h2>
+        <p class="text-muted">Información de tu cuenta</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Columna izquierda: foto y acciones -->
+      <div class="col-lg-4 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body text-center p-4">
+            <img 
+              [src]="usuario.rutaImg || 'assets/img/default-avatar.png'" 
+              alt="Foto de perfil" 
+              class="rounded-circle mb-3"
+              style="width: 150px; height: 150px; object-fit: cover; border: 4px solid #f0ba55;">
+            <h4 class="fw-bold mb-1">{{ usuario.nombre }}</h4>
+            <p class="text-muted mb-3">{{ usuario.correo }}</p>
+            <span class="badge bg-{{ usuario.tipo === '1' ? 'warning' : 'primary' }} mb-3">
+              {{ usuario.tipo === '1' ? 'Administrador' : 'Cliente' }}
+            </span>
+            <div class="d-grid gap-2">
+              <a routerLink="/dashboard/perfil/editar" class="btn btn-warning">
+                <i class="bi bi-pencil me-2"></i>Editar Perfil
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna derecha: información detallada -->
+      <div class="col-lg-8">
+        <div class="card shadow-sm">
+          <div class="card-header bg-white">
+            <h5 class="mb-0 fw-bold">
+              <i class="bi bi-person-badge me-2"></i>Información Personal
+            </h5>
+          </div>
+          <div class="card-body p-4">
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <th scope="row" style="width: 30%;" class="text-muted">
+                    <i class="bi bi-person me-2"></i>Nombre Completo:
+                  </th>
+                  <td class="fw-semibold">{{ usuario.nombre }}</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-muted">
+                    <i class="bi bi-envelope me-2"></i>Correo Electrónico:
+                  </th>
+                  <td class="fw-semibold">{{ usuario.correo }}</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-muted">
+                    <i class="bi bi-telephone me-2"></i>Teléfono:
+                  </th>
+                  <td class="fw-semibold">{{ usuario.telefono || 'No especificado' }}</td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-muted">
+                    <i class="bi bi-shield-check me-2"></i>Tipo de Cuenta:
+                  </th>
+                  <td>
+                    <span class="badge bg-{{ usuario.tipo === '1' ? 'warning' : 'primary' }}">
+                      {{ usuario.tipo === '1' ? 'Administrador' : 'Cliente' }}
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-muted">
+                    <i class="bi bi-calendar-check me-2"></i>Fecha de Registro:
+                  </th>
+                  <td class="fw-semibold">{{ usuario.fechaRegistro | date: 'dd/MM/yyyy HH:mm' }}</td>
+                </tr>
+                <tr *ngIf="usuario.preferencias">
+                  <th scope="row" class="text-muted">
+                    <i class="bi bi-star me-2"></i>Preferencias:
+                  </th>
+                  <td class="fw-semibold">{{ usuario.preferencias }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

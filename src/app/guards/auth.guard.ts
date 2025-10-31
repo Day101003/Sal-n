@@ -8,8 +8,18 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): boolean {
     const token = this.auth.getToken();
-    if (token) return true;
-    this.router.navigate(['/login']);
-    return false;
+    if (!token) {
+      this.router.navigate(['/login']);
+      return false;
+    }
+
+    // verificar si es admin (tipo 1)
+    if (!this.auth.isAdmin()) {
+      alert('⚠️ Acceso denegado. Solo administradores pueden acceder al dashboard.');
+      this.router.navigate(['/home']);
+      return false;
+    }
+
+    return true;
   }
 }
