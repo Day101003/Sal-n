@@ -21,6 +21,7 @@ export class AppComponent {
   esResenas = false;
   esContacto = false;
  cargando = true;
+ perfil = false;
 
   constructor(private router: Router) {
     this.router.events
@@ -34,6 +35,7 @@ export class AppComponent {
         this.esServicios = url.startsWith('/servicios');
         this.esResenas = url.startsWith('/resenas');
         this.esContacto = url.startsWith('/contacto');
+        this.perfil = url.startsWith('/perfil');
       });
   }
 

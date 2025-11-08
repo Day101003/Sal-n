@@ -36,7 +36,14 @@ export const routes: Routes = [
   },
   
 
-  { path: 'agendar-cita', component: AgendarCitaComponent },
+  { path: 'agendar-cita', component: AgendarCitaComponent 
+
+  },
+{
+  path: 'perfil',
+  loadComponent: () => import('./components/perfil-usuario/perfil-usuario.component').then(m => m.PerfilUsuarioComponent),
+  canActivate: [AuthGuard]
+},
 
   {
     path: 'servicios-publico',

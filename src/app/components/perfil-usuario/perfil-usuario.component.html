@@ -1,0 +1,242 @@
+<div class="perfil-modern-container">
+  
+  <!-- Header con cover y avatar -->
+  <div class="profile-cover">
+    <div class="cover-overlay"></div>
+    <button class="btn-back" routerLink="/home">
+      <i class="bi bi-arrow-left"></i> Volver
+    </button>
+  </div>
+
+  <div class="container profile-content">
+    
+    <!-- Avatar y nombre -->
+    <div class="profile-header">
+      <div class="avatar-wrapper">
+        <div class="avatar-large">
+          <!-- Mostrar imagen si existe, sino mostrar icono -->
+          <img *ngIf="imagenPreview" [src]="imagenPreview" alt="Avatar" class="avatar-img">
+          <i *ngIf="!imagenPreview" class="bi bi-person-fill"></i>
+        </div>
+        <button class="btn-edit-avatar" (click)="abrirSelectorImagen()" type="button">
+          <i class="bi bi-camera-fill"></i>
+        </button>
+      </div>
+      
+      <div class="profile-info-header" *ngIf="!cargando && usuario">
+        <h1>{{ usuario.nombre }}</h1>
+        <p class="profile-email">
+          <i class="bi bi-envelope me-2"></i>{{ usuario.correo }}
+        </p>
+        <div class="profile-badges">
+          <span class="badge-custom" [class.badge-admin]="usuario.tipo === 1" [class.badge-client]="usuario.tipo === 2">
+            <i class="bi" [class.bi-shield-fill-check]="usuario.tipo === 1" [class.bi-person-check-fill]="usuario.tipo === 2"></i>
+            {{ usuario.tipo === 1 ? 'Administrador' : 'Cliente' }}
+          </span>
+          <span class="badge-custom badge-date">
+            <i class="bi bi-calendar3 me-1"></i>
+            Miembro desde {{ usuario.fechaRegistro | date: 'MMM yyyy' }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading -->
+    <div *ngIf="cargando" class="loading-section">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+      <p class="mt-3">Cargando tu perfil...</p>
+    </div>
+
+    <!-- Contenido del perfil -->
+    <div class="row g-4 mt-4" *ngIf="!cargando && usuario">
+      
+      <!-- Columna izquierda: Información -->
+      <div class="col-lg-8">
+        
+        <!-- Card de información personal -->
+        <div class="profile-card">
+          <div class="card-header-custom">
+            <h5>
+              <i class="bi bi-person-lines-fill me-2"></i>
+              Información Personal
+            </h5>
+            <button class="btn btn-sm btn-edit" *ngIf="!modoEdicion" (click)="activarEdicion()">
+              <i class="bi bi-pencil-square me-1"></i> Editar
+            </button>
+          </div>
+
+          <!-- Modo Vista -->
+          <div class="card-body" *ngIf="!modoEdicion">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="info-box">
+                  <label><i class="bi bi-person me-2"></i>Nombre Completo</label>
+                  <p>{{ usuario.nombre }}</p>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="info-box">
+                  <label><i class="bi bi-telephone me-2"></i>Teléfono</label>
+                  <p>{{ usuario.telefono || 'No registrado' }}</p>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="info-box">
+                  <label><i class="bi bi-heart me-2"></i>Preferencias</label>
+                  <p class="preferences-text">{{ usuario.preferencias || 'Sin preferencias registradas' }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modo Edición -->
+          <div class="card-body" *ngIf="modoEdicion">
+            <form (ngSubmit)="guardarCambios()">
+              <div class="row g-3">
+                
+                <div class="col-md-6">
+                  <label class="form-label">
+                    <i class="bi bi-person me-2"></i>Nombre Completo
+                  </label>
+                  <input
+                    type="text"
+                    [(ngModel)]="nombre"
+                    name="nombre"
+                    class="form-control modern-input"
+                    required
+                  />
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">
+                    <i class="bi bi-telephone me-2"></i>Teléfono
+                  </label>
+                  <input
+                    type="tel"
+                    [(ngModel)]="telefono"
+                    name="telefono"
+                    class="form-control modern-input"
+                    placeholder="+506 8888-9999"
+                  />
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label">
+                    <i class="bi bi-envelope me-2"></i>Correo Electrónico
+                  </label>
+                  <input
+                    type="email"
+                    class="form-control modern-input"
+                    [value]="usuario.correo"
+                    disabled
+                  />
+                  <small class="text-muted">El correo no puede ser modificado</small>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label">
+                    <i class="bi bi-heart me-2"></i>Preferencias
+                  </label>
+                  <textarea
+                    [(ngModel)]="preferencias"
+                    name="preferencias"
+                    class="form-control modern-input"
+                    rows="4"
+                    placeholder="Cuéntanos tus preferencias sobre servicios, horarios, estilos..."
+                  ></textarea>
+                </div>
+
+                <div class="col-12">
+                  <div class="d-flex gap-2 justify-content-end">
+                    <button type="button" class="btn btn-cancel" (click)="cancelarEdicion()">
+                      <i class="bi bi-x-circle me-1"></i> Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-save">
+                      <i class="bi bi-check-circle me-1"></i> Guardar Cambios
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Columna derecha: Accesos rápidos -->
+      <div class="col-lg-4">
+        
+        <!-- Card de acciones rápidas -->
+        <div class="profile-card">
+          <div class="card-header-custom">
+            <h5><i class="bi bi-lightning-fill me-2"></i>Accesos Rápidos</h5>
+          </div>
+          <div class="card-body p-0">
+            <a routerLink="/agendar-cita" class="quick-link">
+              <div class="quick-link-icon bg-primary">
+                <i class="bi bi-calendar-plus"></i>
+              </div>
+              <div class="quick-link-content">
+                <h6>Agendar Cita</h6>
+                <small>Reserva tu próxima cita</small>
+              </div>
+              <i class="bi bi-chevron-right"></i>
+            </a>
+
+            <a routerLink="/mis-citas" class="quick-link">
+              <div class="quick-link-icon bg-success">
+                <i class="bi bi-calendar-check"></i>
+              </div>
+              <div class="quick-link-content">
+                <h6>Mis Citas</h6>
+                <small>Ver citas programadas</small>
+              </div>
+              <i class="bi bi-chevron-right"></i>
+            </a>
+
+            <a routerLink="/servicios-publico" class="quick-link">
+              <div class="quick-link-icon bg-info">
+                <i class="bi bi-scissors"></i>
+              </div>
+              <div class="quick-link-content">
+                <h6>Servicios</h6>
+                <small>Explora nuestros servicios</small>
+              </div>
+              <i class="bi bi-chevron-right"></i>
+            </a>
+
+            <a routerLink="/dashboard" class="quick-link" *ngIf="usuario.tipo === 1">
+              <div class="quick-link-icon bg-warning">
+                <i class="bi bi-speedometer2"></i>
+              </div>
+              <div class="quick-link-content">
+                <h6>Dashboard</h6>
+                <small>Panel de administración</small>
+              </div>
+              <i class="bi bi-chevron-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card de cerrar sesión -->
+        <div class="profile-card mt-4">
+          <div class="card-body text-center">
+            <button class="btn btn-logout w-100" (click)="cerrarSesion()">
+              <i class="bi bi-box-arrow-right me-2"></i>
+              Cerrar Sesión
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

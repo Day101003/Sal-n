@@ -1,0 +1,468 @@
+.perfil-modern-container {
+  min-height: 100vh;
+  background: #f5f7fa;
+  padding-bottom: 3rem;
+}
+
+/* Cover Header */
+.profile-cover {
+  height: 280px;
+  background: linear-gradient(135deg, #f0ba55 0%, #e0aa45 50%, #d09935 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-cover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,133.3C960,128,1056,96,1152,90.7C1248,85,1344,107,1392,117.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+  background-size: cover;
+  animation: wave 15s linear infinite;
+}
+
+@keyframes wave {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.2) 100%);
+}
+
+.btn-back {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s;
+  z-index: 10;
+}
+
+.btn-back:hover {
+  background: rgba(255,255,255,0.3);
+  transform: translateX(-5px);
+}
+
+/* Profile Header */
+.profile-content {
+  margin-top: -100px;
+  position: relative;
+  z-index: 5;
+}
+
+.profile-header {
+  display: flex;
+  align-items: flex-end;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.avatar-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.avatar-large {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f0ba55, #e0aa45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  color: white;
+  border: 6px solid white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.btn-edit-avatar {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #f0ba55;
+  color: #f0ba55;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.btn-edit-avatar:hover {
+  background: #f0ba55;
+  color: white;
+  transform: scale(1.1);
+}
+
+.profile-info-header {
+  flex: 1;
+  padding-bottom: 1rem;
+}
+
+.profile-info-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.profile-email {
+  color: #6c757d;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.profile-badges {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.badge-custom {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.badge-admin {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.badge-client {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.badge-date {
+  color: #6c757d;
+}
+
+/* Profile Cards */
+.profile-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.profile-card:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.card-header-custom {
+  padding: 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header-custom h5 {
+  margin: 0;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.btn-edit {
+  background: #f0ba55;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.btn-edit:hover {
+  background: #e0aa45;
+  transform: translateY(-2px);
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Info Boxes */
+.info-box {
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border-left: 4px solid #f0ba55;
+}
+
+.info-box label {
+  display: block;
+  font-weight: 600;
+  color: #6c757d;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.info-box p {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1rem;
+}
+
+.preferences-text {
+  line-height: 1.6;
+}
+
+/* Modern Inputs */
+.modern-input {
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  transition: all 0.3s;
+}
+
+.modern-input:focus {
+  border-color: #f0ba55;
+  box-shadow: 0 0 0 4px rgba(240, 186, 85, 0.1);
+}
+
+.modern-input:disabled {
+  background: #f8f9fa;
+  cursor: not-allowed;
+}
+
+/* Buttons */
+.btn-cancel {
+  background: #e9ecef;
+  color: #6c757d;
+  border: none;
+  border-radius: 10px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.btn-cancel:hover {
+  background: #dee2e6;
+}
+
+.btn-save {
+  background: linear-gradient(135deg, #f0ba55, #e0aa45);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.btn-save:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(240, 186, 85, 0.3);
+}
+
+/* Quick Links */
+.quick-link {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  color: #2c3e50;
+  border-bottom: 1px solid #e9ecef;
+  transition: all 0.3s;
+}
+
+.quick-link:last-child {
+  border-bottom: none;
+}
+
+.quick-link:hover {
+  background: #f8f9fa;
+  padding-left: 2rem;
+}
+
+.quick-link-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  margin-right: 1rem;
+  transition: all 0.3s;
+}
+
+/* 🎨 Colores personalizables para cada icono */
+.quick-link-icon.bg-primary {
+  background: linear-gradient(135deg, #d9db47 0%, #f3ba50 100%);
+}
+
+.quick-link-icon.bg-success {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.quick-link-icon.bg-info {
+  background: linear-gradient(135deg, #1a5181 0%, #0b305f 100%);
+}
+
+.quick-link-icon.bg-warning {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.quick-link-icon.bg-danger {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.quick-link-icon.bg-purple {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+}
+
+.quick-link-icon.bg-orange {
+  background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);
+}
+
+.quick-link-icon.bg-teal {
+  background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+}
+
+.quick-link-icon.bg-pink {
+  background: linear-gradient(135deg, #f857a6 0%, #ff5858 100%);
+}
+
+.quick-link-icon.bg-gold {
+  background: linear-gradient(135deg, #f0ba55 0%, #e0aa45 100%);
+}
+
+/* Efecto hover en iconos */
+.quick-link:hover .quick-link-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.quick-link-content {
+  flex: 1;
+}
+
+.quick-link-content h6 {
+  margin: 0;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.quick-link-content small {
+  color: #6c757d;
+}
+
+.quick-link > i:last-child {
+  color: #6c757d;
+  transition: all 0.3s;
+}
+
+.quick-link:hover > i:last-child {
+  transform: translateX(5px);
+  color: #f0ba55;
+}
+
+/* Logout Button */
+.btn-logout {
+  background: linear-gradient(135deg, #cdb52b, #da8d20);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-logout:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+/* Loading */
+.loading-section {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+/* Avatar Image */
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Efecto de carga en el avatar */
+.avatar-large.loading {
+  position: relative;
+}
+
+.avatar-large.loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-info-header {
+    padding-bottom: 0;
+  }
+
+  .profile-badges {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .avatar-large {
+    width: 120px;
+    height: 120px;
+    font-size: 4rem;
+  }
+
+  .profile-cover {
+    height: 200px;
+  }
+
+  .profile-content {
+    margin-top: -60px;
+  }
+
+  .profile-info-header h1 {
+    font-size: 1.5rem;
+  }
+}
